@@ -71,6 +71,7 @@ class UPBFT:
         self.malicious_nodes = set()
         self.node_scores = {node: np.random.uniform(0, 1) for node in self.nodes}  # AI-based ranking
         self.malicious_behavior = {}
+        self.performance_metrics = {"total_transactions": 0, "total_time": 0.0}
 
     def elect_leader(self):
         """Choose the node with the highest efficiency score as the leader."""
@@ -96,13 +97,21 @@ class UPBFT:
         return selected_nodes
 
     def pre_prepare(self, transaction):
+        start_time = time.time()  # Track transaction start time
+
         if self.leader is None:
             self.elect_leader()
         
-        return {
+        response = {
             node: transaction if node not in self.malicious_nodes else self.inject_fault(transaction, node)
             for node in self.nodes
         }
+
+        end_time = time.time()  # Track transaction end time
+        self.performance_metrics["total_transactions"] += 1
+        self.performance_metrics["total_time"] += (end_time - start_time)
+        
+        return response
 
     def inject_fault(self, transaction, node):
         """Modify transaction behavior if the node is malicious."""
@@ -125,3 +134,20 @@ class UPBFT:
             return True
         print("[COMMIT] Transaction failed due to Byzantine nodes.")
         return False
+
+    def get_performance_metrics(self):
+        """Calculate TPS & Latency"""
+        if self.performance_metrics["total_time"] > 0:
+            tps = self.performance_metrics["total_transactions"] / self.performance_metrics["total_time"]
+        else:
+            tps = 0
+        
+        avg_latency = self.performance_metrics["total_time"] / max(1, self.performance_metrics["total_transactions"])
+        
+        return {
+            "Total Transactions": self.performance_metrics["total_transactions"],
+            "Total Time (s)": round(self.performance_metrics["total_time"], 4),
+            "TPS (Transactions Per Second)": round(tps, 4),
+            "Average Latency (s)": round(avg_latency, 6)
+        }
+

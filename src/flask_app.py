@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from flask import Flask, request, jsonify
 from consensus.hybrid_consensus import DAGBlockchain, UPBFT
 import hashlib
@@ -47,5 +51,10 @@ def get_transaction(tx_hash):
 def get_dag_structure():
     return jsonify(blockchain.graph), 200
 
+@app.route("/performance_metrics", methods=["GET"])
+def performance_metrics():
+    return jsonify(consensus.get_performance_metrics()), 200
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+

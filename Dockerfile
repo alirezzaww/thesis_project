@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the requirements file into the container
 COPY . /app/
 
+# Set the Python path to recognize `src/`
+ENV PYTHONPATH="${PYTHONPATH}:/app/src"
+
 # Install dependencies
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
