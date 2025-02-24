@@ -126,6 +126,7 @@ protobuf==5.29.3
 psutil==7.0.0
 ptyprocess==0.7.0
 pure_eval==0.2.3
+pyasn1==0.6.1
 pycparser==2.22
 pycryptodome==3.21.0
 pydantic==2.10.6
@@ -146,6 +147,7 @@ rfc3986-validator==0.1.1
 rich==13.9.4
 rlp==4.1.0
 rpds-py==0.23.1
+rsa==4.9
 scikit-learn==1.6.1
 scipy==1.15.2
 seaborn==0.13.2
