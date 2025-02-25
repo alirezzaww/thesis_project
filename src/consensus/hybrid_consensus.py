@@ -92,7 +92,6 @@ class UPBFT:
         self.state = {}
         self.malicious_nodes = set()
         self.node_scores = {node: np.random.uniform(0, 1) for node in self.nodes}  # AI-based ranking
-        self.malicious_behavior = {}
         self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}  # Prevent division by zero
 
     def elect_leader(self):
