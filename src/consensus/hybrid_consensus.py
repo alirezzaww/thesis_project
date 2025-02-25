@@ -5,7 +5,7 @@ import numpy as np
 import rsa
 from collections import defaultdict
 
-# Generate RSA keys
+# Generate RSA keys for signing
 (public_key, private_key) = rsa.newkeys(512)
 
 # Define a Block in the DAG
@@ -150,4 +150,3 @@ class UPBFT:
             "TPS (Transactions Per Second)": round(tps, 4),
             "Average Latency (s)": round(avg_latency, 6)
         }
-

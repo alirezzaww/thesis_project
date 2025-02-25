@@ -5,8 +5,8 @@ import requests
 SUBMIT_TRANSACTION_URL = "http://127.0.0.1:5000/submit_transaction"
 
 # Number of transactions per batch and number of batches
-TRANSACTIONS_PER_BATCH = 100
-NUM_BATCHES = 10
+TRANSACTIONS_PER_BATCH = 1000
+NUM_BATCHES = 20
 
 # Function to simulate a batch of transactions
 def send_transactions(batch_num, num_transactions):
