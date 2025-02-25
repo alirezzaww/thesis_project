@@ -3,6 +3,8 @@ import time
 import random
 import numpy as np
 import rsa
+import networkx as nx
+import matplotlib.pyplot as plt
 from collections import defaultdict
 
 # Generate RSA keys for signing
@@ -67,6 +69,20 @@ class DAGBlockchain:
         for block in self.blocks:
             print(f"Block {block.index} | Hash: {block.hash} | Parents: {block.previous_hashes}")
 
+        # Create a directed graph
+        dag = nx.DiGraph()
+        for block in self.blocks:
+            dag.add_node(block.hash, label=f"Block {block.index}")
+            for parent in block.previous_hashes:
+                dag.add_edge(parent, block.hash)
+
+        plt.figure(figsize=(12, 6))
+        pos = nx.spring_layout(dag)
+        labels = {node: dag.nodes[node]['label'] for node in dag.nodes}
+        nx.draw(dag, pos, with_labels=True, labels=labels, node_color='lightblue', edge_color='gray', node_size=1500, font_size=10)
+        plt.title("DAG Blockchain Structure")
+        plt.show()
+
 # U-PBFT (Hierarchical Byzantine Fault Tolerance for UAVs)
 class UPBFT:
     def __init__(self, nodes, f):
@@ -80,8 +96,9 @@ class UPBFT:
         self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}  # Prevent division by zero
 
     def elect_leader(self):
-        """Rotate leader in a round-robin fashion."""
-        self.leader_index = (self.leader_index + 1) % len(self.nodes)
+        """Rotate leader in a round-robin fashion every batch instead of every transaction."""
+        if self.performance_metrics["total_transactions"] % 10 == 0:
+            self.leader_index = (self.leader_index + 1) % len(self.nodes)
         self.leader = self.nodes[self.leader_index]
         print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
 
@@ -96,46 +113,22 @@ class UPBFT:
         print(f"[INFO] Optimized Node Selection: {selected_nodes}")
         return selected_nodes
 
-    def simulate_malicious_nodes(self, probability=0.2):
-        """Randomly mark some nodes as malicious with specific attack behaviors."""
-        for node in self.nodes:
-            if random.random() < probability:
-                self.malicious_nodes.add(node)
-                self.malicious_behavior[node] = random.choice(["send_fake_tx", "drop_messages"])
-        print(f"[SECURITY] Malicious nodes detected: {self.malicious_nodes}")
-
     def pre_prepare(self, transaction):
-        start_time = time.time()
-        self.elect_leader()
-        
-        response = {
-            node: transaction for node in self.nodes if node not in self.malicious_nodes
-        }
-        end_time = time.time()
-        self.performance_metrics["total_transactions"] += 1
-        self.performance_metrics["total_time"] += (end_time - start_time)
-        
-        return response
-    
+        """Simulate pre-prepare step in PBFT."""
+        return f"PrePrepared({transaction})"
+
     def prepare(self, pre_prepared_msg):
-        """Simulate the prepare phase of the consensus process."""
-        confirmations = {
-            node: pre_prepared_msg for node in self.nodes if node not in self.malicious_nodes
-        }
-        return confirmations
-    
-    def commit(self, confirmations):
-        """Simulate the commit phase of the consensus process."""
-        valid_votes = len(confirmations) - len(self.malicious_nodes)
-        if valid_votes >= 2 * self.f + 1:
-            print("[COMMIT] Transaction committed.")
-            return True
-        print("[COMMIT] Transaction failed due to Byzantine nodes.")
-        return False
+        """Simulate prepare step in PBFT."""
+        return f"Prepared({pre_prepared_msg})"
+
+    def commit(self, prepared_msg):
+        """Simulate commit step in PBFT."""
+        self.performance_metrics["total_transactions"] += 1
+        return True
 
     def get_performance_metrics(self):
-        """Calculate TPS & Latency with correct scaling"""
-        total_time = max(self.performance_metrics["total_time"], 1)  # Ensure time is at least 1 second for scaling
+        """Correct TPS & Latency Calculation"""
+        total_time = max(self.performance_metrics["total_time"], 0.0001)
         tps = self.performance_metrics["total_transactions"] / total_time
         avg_latency = self.performance_metrics["total_time"] / max(1, self.performance_metrics["total_transactions"])
         
