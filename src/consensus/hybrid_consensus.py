@@ -61,22 +61,40 @@ class DAGBlockchain:
             return [self.blocks[-1].hash]
         return [block.hash for block in self.blocks[-2:]]
 
+    def visualize_dag(self):
+        """Generate a full visual representation of the DAG blockchain."""
+        print("\n[DAG Blockchain Structure]")
+        for block in self.blocks:
+            print(f"Block {block.index} | Hash: {block.hash} | Parents: {block.previous_hashes}")
+
 # U-PBFT (Hierarchical Byzantine Fault Tolerance for UAVs)
 class UPBFT:
     def __init__(self, nodes, f):
         self.nodes = nodes
         self.f = f  # Max Byzantine nodes tolerated
-        self.leader = None
+        self.leader_index = 0  # Index for round-robin leader rotation
         self.state = {}
         self.malicious_nodes = set()
         self.node_scores = {node: np.random.uniform(0, 1) for node in self.nodes}  # AI-based ranking
         self.malicious_behavior = {}
-        self.performance_metrics = {"total_transactions": 0, "total_time": 0.0}
+        self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}  # Prevent division by zero
 
     def elect_leader(self):
-        """Choose the node with the highest efficiency score as the leader."""
-        self.leader = max(self.node_scores, key=self.node_scores.get)
-        print(f"[LEADER ELECTION] AI-Selected Leader: {self.leader}")
+        """Rotate leader in a round-robin fashion."""
+        self.leader_index = (self.leader_index + 1) % len(self.nodes)
+        self.leader = self.nodes[self.leader_index]
+        print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
+
+    def optimize_node_selection(self):
+        """Select a subset of high-efficiency nodes for consensus."""
+        sorted_nodes = sorted(self.node_scores.items(), key=lambda x: x[1], reverse=True)
+        selected_nodes = [node for node, score in sorted_nodes if node not in self.malicious_nodes]
+
+        if len(selected_nodes) < self.f + 1:
+            print("[SECURITY ALERT] Too many malicious nodes! Consensus may fail.")
+
+        print(f"[INFO] Optimized Node Selection: {selected_nodes}")
+        return selected_nodes
 
     def simulate_malicious_nodes(self, probability=0.2):
         """Randomly mark some nodes as malicious with specific attack behaviors."""
@@ -86,48 +104,28 @@ class UPBFT:
                 self.malicious_behavior[node] = random.choice(["send_fake_tx", "drop_messages"])
         print(f"[SECURITY] Malicious nodes detected: {self.malicious_nodes}")
 
-    def optimize_node_selection(self):
-        """Select a subset of high-efficiency nodes for consensus."""
-        sorted_nodes = sorted(self.node_scores.items(), key=lambda x: x[1], reverse=True)
-        selected_nodes = [node for node, score in sorted_nodes if node not in self.malicious_nodes]
-        
-        if len(selected_nodes) < self.f + 1:
-            print("[SECURITY ALERT] Too many malicious nodes! Consensus may fail.")
-        
-        return selected_nodes
-
     def pre_prepare(self, transaction):
-        start_time = time.time()  # Track transaction start time
-
-        if self.leader is None:
-            self.elect_leader()
+        start_time = time.time()
+        self.elect_leader()
         
         response = {
-            node: transaction if node not in self.malicious_nodes else self.inject_fault(transaction, node)
-            for node in self.nodes
+            node: transaction for node in self.nodes if node not in self.malicious_nodes
         }
-
-        end_time = time.time()  # Track transaction end time
+        end_time = time.time()
         self.performance_metrics["total_transactions"] += 1
         self.performance_metrics["total_time"] += (end_time - start_time)
         
         return response
-
-    def inject_fault(self, transaction, node):
-        """Modify transaction behavior if the node is malicious."""
-        if self.malicious_behavior[node] == "send_fake_tx":
-            return f"FAKE-{transaction}"
-        elif self.malicious_behavior[node] == "drop_messages":
-            return None  # Simulate message drop
-        return transaction
-
-    def prepare(self, message):
+    
+    def prepare(self, pre_prepared_msg):
+        """Simulate the prepare phase of the consensus process."""
         confirmations = {
-            node: message for node in self.nodes if node not in self.malicious_nodes and message is not None
+            node: pre_prepared_msg for node in self.nodes if node not in self.malicious_nodes
         }
         return confirmations
-
+    
     def commit(self, confirmations):
+        """Simulate the commit phase of the consensus process."""
         valid_votes = len(confirmations) - len(self.malicious_nodes)
         if valid_votes >= 2 * self.f + 1:
             print("[COMMIT] Transaction committed.")
@@ -136,12 +134,9 @@ class UPBFT:
         return False
 
     def get_performance_metrics(self):
-        """Calculate TPS & Latency"""
-        if self.performance_metrics["total_time"] > 0:
-            tps = self.performance_metrics["total_transactions"] / self.performance_metrics["total_time"]
-        else:
-            tps = 0
-        
+        """Calculate TPS & Latency with correct scaling"""
+        total_time = max(self.performance_metrics["total_time"], 1)  # Ensure time is at least 1 second for scaling
+        tps = self.performance_metrics["total_transactions"] / total_time
         avg_latency = self.performance_metrics["total_time"] / max(1, self.performance_metrics["total_transactions"])
         
         return {

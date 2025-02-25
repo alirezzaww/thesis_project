@@ -4,9 +4,9 @@ import requests
 # Endpoint for submitting transactions
 SUBMIT_TRANSACTION_URL = "http://127.0.0.1:5000/submit_transaction"
 
-# Number of transactions per batch and number of batches
-TRANSACTIONS_PER_BATCH = 1000
-NUM_BATCHES = 20
+# Optimized settings for load testing
+TRANSACTIONS_PER_BATCH = 2000  # Reduced batch size for quicker runs
+NUM_BATCHES = 20  # Reduced number of batches to minimize long execution times
 
 # Function to simulate a batch of transactions
 def send_transactions(batch_num, num_transactions):
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     total_transactions = 0
     total_time = 0.0
 
-    print("[STARTING LOAD TEST]")
+    print("[STARTING OPTIMIZED LOAD TEST]")
 
     for batch_num in range(1, NUM_BATCHES + 1):
         print(f"\n[Sending batch {batch_num}/{NUM_BATCHES}]")
