@@ -52,7 +52,7 @@ class DAGBlockchain:
         """Add a block to the DAG with validation."""
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
-        if new_block.verify_signature() and self.validate_block(new_block):
+        if new_block.verify_signature() and self.validate_block(new_block) and self.check_for_conflicts(new_block):
             self.blocks.append(new_block)
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
@@ -65,7 +65,9 @@ class DAGBlockchain:
         """Retrieve parent blocks for the new DAG block."""
         if len(self.blocks) < 2:
             return [self.blocks[-1].hash]
-        return [block.hash for block in self.blocks[-2:]]
+        
+        # Select last 3 parent blocks to improve DAG branching structure
+        return [block.hash for block in self.blocks[-3:]]
 
     def validate_block(self, block):
         """Ensure block integrity and proper referencing of parent blocks."""
@@ -145,6 +147,9 @@ class UPBFT:
             if self.node_scores[node] < 0.3:  # Assume nodes with score < 0.3 are Byzantine
                 self.malicious_nodes.add(node)
         print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
+            # Remove Byzantine nodes from node selection to prevent future interference
+        self.nodes = [node for node in self.nodes if node not in self.malicious_nodes]
+        print(f"[SECURITY] Updated Node Pool (Malicious Removed): {self.nodes}")
 
     def elect_leader(self):
         """Rotate leader, ensuring it's not malicious."""
@@ -205,6 +210,9 @@ class UPBFT:
 
         if attack_type == "double-spend":
             print("[ATTACK] Byzantine nodes are attempting a double-spend attack!")
+
+        elif attack_type == "malicious-leader":
+            print("[ATTACK] Malicious leaders are trying to disrupt consensus!")
 
         print(f"[INFO] Byzantine Nodes Introduced: {self.malicious_nodes}")
 
