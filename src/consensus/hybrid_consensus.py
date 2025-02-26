@@ -51,7 +51,7 @@ class DAGBlockchain:
     def add_block(self, transactions):
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
-        if new_block.verify_signature():
+        if new_block.verify_signature() and self.validate_block(new_block):
             self.blocks.append(new_block)
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
@@ -63,13 +63,42 @@ class DAGBlockchain:
             return [self.blocks[-1].hash]
         return [block.hash for block in self.blocks[-2:]]
 
+    def validate_block(self, block):
+        """Ensure block integrity and proper referencing of parent blocks."""
+        if not block.verify_signature():
+            print(f"[DAG VALIDATION ERROR] Block {block.index} has invalid signature!")
+            return False
+        if block.index > 0 and not all(parent in self.graph for parent in block.previous_hashes):
+            print(f"[DAG VALIDATION ERROR] Block {block.index} references non-existent parent blocks!")
+            return False
+        return True
+    
+    def validate_dag(self):
+        """Validate the integrity of the DAG blockchain structure."""
+        print("\n[VALIDATING DAG STRUCTURE]")
+
+        for block in self.blocks:
+            # Ensure block hash is correct
+            if block.hash != block.compute_hash():
+                print(f"[ERROR] Block {block.index} has an invalid hash!")
+                return False
+
+            # Ensure parent references exist in the blockchain
+            for parent in block.previous_hashes:
+                if parent not in self.graph:
+                    print(f"[ERROR] Block {block.index} references a missing parent!")
+                    return False
+
+        print("[SUCCESS] DAG Blockchain is valid!")
+        return True
+
+
     def visualize_dag(self):
         """Generate a full visual representation of the DAG blockchain."""
         print("\n[DAG Blockchain Structure]")
         for block in self.blocks:
             print(f"Block {block.index} | Hash: {block.hash} | Parents: {block.previous_hashes}")
 
-        # Create a directed graph
         dag = nx.DiGraph()
         for block in self.blocks:
             dag.add_node(block.hash, label=f"Block {block.index}")
@@ -89,16 +118,31 @@ class UPBFT:
         self.nodes = nodes
         self.f = f  # Max Byzantine nodes tolerated
         self.leader_index = 0  # Index for round-robin leader rotation
-        self.state = {}
         self.malicious_nodes = set()
         self.node_scores = {node: np.random.uniform(0, 1) for node in self.nodes}  # AI-based ranking
-        self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}  # Prevent division by zero
+        self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}
+
+    def detect_malicious_nodes(self):
+        """Detect and isolate malicious nodes."""
+        print("\n[SECURITY] Checking for Byzantine behavior...")
+
+        for node in self.nodes:
+            if self.node_scores[node] < 0.3:  # Assume nodes with score < 0.3 are Byzantine
+                self.malicious_nodes.add(node)
+
+        print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
+
 
     def elect_leader(self):
-        """Rotate leader in a round-robin fashion every batch instead of every transaction."""
+        """Rotate leader, ensuring it's not malicious."""
         if self.performance_metrics["total_transactions"] % 10 == 0:
             self.leader_index = (self.leader_index + 1) % len(self.nodes)
         self.leader = self.nodes[self.leader_index]
+
+        if self.leader in self.malicious_nodes:
+            print(f"[WARNING] Leader {self.leader} is malicious! Selecting new leader...")
+            self.elect_leader()
+
         print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
 
     def optimize_node_selection(self):
@@ -126,14 +170,23 @@ class UPBFT:
         return True
 
     def get_performance_metrics(self):
-        """Correct TPS & Latency Calculation"""
+        """Calculate TPS & Latency."""
         total_time = max(self.performance_metrics["total_time"], 0.0001)
         tps = self.performance_metrics["total_transactions"] / total_time
         avg_latency = self.performance_metrics["total_time"] / max(1, self.performance_metrics["total_transactions"])
-        
         return {
             "Total Transactions": self.performance_metrics["total_transactions"],
             "Total Time (s)": round(self.performance_metrics["total_time"], 4),
             "TPS (Transactions Per Second)": round(tps, 4),
             "Average Latency (s)": round(avg_latency, 6)
         }
+
+    def simulate_byzantine_failures(self, failure_rate=0.3):
+        """Randomly introduce Byzantine failures among nodes."""
+        print("\n[SECURITY TEST] Simulating Byzantine Failures...")
+
+        for node in self.nodes:
+            if random.random() < failure_rate:
+                self.malicious_nodes.add(node)
+
+        print(f"[INFO] Byzantine Nodes Introduced: {self.malicious_nodes}")
