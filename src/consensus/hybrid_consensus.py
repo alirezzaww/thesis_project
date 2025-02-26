@@ -48,11 +48,19 @@ class DAGBlockchain:
         self.blocks.append(genesis)
         self.graph[genesis.hash] = []
 
-    def add_block(self, transactions):
+    def add_block(self, transactions, proposer_node):
         """Add a block to the DAG with validation."""
+        if proposer_node in consensus.malicious_nodes:
+            print(f"[SECURITY] Block proposal from malicious node {proposer_node} rejected!")
+            return None  # Reject block from Byzantine node
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
-        if new_block.verify_signature() and self.validate_block(new_block) and self.check_for_conflicts(new_block):
+
+        if self.check_for_conflicts(new_block):
+            print(f"[ERROR] Block {new_block.index} rejected due to conflicts!")
+            return None  # Reject conflicting transactions
+
+        if new_block.verify_signature() and self.validate_block(new_block):
             self.blocks.append(new_block)
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
@@ -121,12 +129,16 @@ class DAGBlockchain:
 
 
     def check_for_conflicts(self, new_block):
-        """Ensure no conflicting blocks exist in the DAG."""
+        """Detects double-spending attempts in the DAG blockchain."""
+        all_transactions = set()
+
         for block in self.blocks:
-            if block.index == new_block.index and block.hash != new_block.hash:
-                print(f"[CONFLICT DETECTED] Block {new_block.index} conflicts with existing DAG structure!")
-                return False
-        return True
+            for tx in block.transactions:
+                if tx in all_transactions:
+                    print(f"[SECURITY ALERT] Double-spending detected for transaction {tx}!")
+                    return True  # Conflict detected
+                all_transactions.add(tx)
+        return False  # No conflict
 
 
 
@@ -152,16 +164,19 @@ class UPBFT:
         print(f"[SECURITY] Updated Node Pool (Malicious Removed): {self.nodes}")
 
     def elect_leader(self):
-        """Rotate leader, ensuring it's not malicious."""
-        for _ in range(len(self.nodes)):  # Ensure we find a non-malicious leader
-            self.leader_index = (self.leader_index + 1) % len(self.nodes)
-            self.leader = self.nodes[self.leader_index]
+        """Rotate leader every 100 transactions to stabilize consensus."""
+        if self.performance_metrics["total_transactions"] % 100 == 0:  # Rotate every 100 transactions
+            for _ in range(len(self.nodes)):  # Ensure we find a non-malicious leader
+                self.leader_index = (self.leader_index + 1) % len(self.nodes)
+                self.leader = self.nodes[self.leader_index]
 
             if self.leader not in self.malicious_nodes:
-                print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
                 return
+            else:
+                print(f"[WARNING] Leader {self.leader} is malicious! Selecting new leader...")
 
-        print("[ERROR] No valid leader found! All nodes are Byzantine!")
+
+        print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
 
 
     def optimize_node_selection(self):
