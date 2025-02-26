@@ -28,7 +28,7 @@ def process_transaction_batch(batch):
             if consensus.commit(prepared_msg):
                 blockchain.add_block([tx])
 
-            latency = time.time() - start_time
+            latency = time.perf_counter() - start_time  # More accurate high-res timing
             print(f"Latency for {tx}: {latency:.6f} seconds")
 
     except Exception as e:

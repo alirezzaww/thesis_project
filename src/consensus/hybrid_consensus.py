@@ -69,6 +69,9 @@ class DAGBlockchain:
 
     def validate_block(self, block):
         """Ensure block integrity and proper referencing of parent blocks."""
+        if block.compute_hash() != block.hash:
+            print(f"[DAG VALIDATION ERROR] Block {block.index} has an incorrect hash!")
+            return False
         if not block.verify_signature():
             print(f"[DAG VALIDATION ERROR] Block {block.index} has invalid signature!")
             return False
@@ -94,11 +97,9 @@ class DAGBlockchain:
         print("[SUCCESS] DAG Blockchain is valid!")
         return True
 
-    def visualize_dag(self):
+    def visualize_dag(self, malicious_nodes=None):
         """Generate a full visual representation of the DAG blockchain."""
         print("\n[DAG Blockchain Structure]")
-        for block in self.blocks:
-            print(f"Block {block.index} | Hash: {block.hash} | Parents: {block.previous_hashes}")
 
         dag = nx.DiGraph()
         for block in self.blocks:
@@ -109,9 +110,23 @@ class DAGBlockchain:
         plt.figure(figsize=(12, 6))
         pos = nx.spring_layout(dag)
         labels = {node: dag.nodes[node]['label'] for node in dag.nodes}
-        nx.draw(dag, pos, with_labels=True, labels=labels, node_color='lightblue', edge_color='gray', node_size=1500, font_size=10)
-        plt.title("DAG Blockchain Structure")
+    
+        node_colors = ["red" if node in (malicious_nodes or []) else "lightblue" for node in dag.nodes]
+    
+        nx.draw(dag, pos, with_labels=True, labels=labels, node_color=node_colors, edge_color='gray', node_size=1500, font_size=10)
+        plt.title("DAG Blockchain Structure with Byzantine Nodes Highlighted")
         plt.show()
+
+
+    def check_for_conflicts(self, new_block):
+        """Ensure no conflicting blocks exist in the DAG."""
+        for block in self.blocks:
+            if block.index == new_block.index and block.hash != new_block.hash:
+                print(f"[CONFLICT DETECTED] Block {new_block.index} conflicts with existing DAG structure!")
+                return False
+        return True
+
+
 
 # U-PBFT (Hierarchical Byzantine Fault Tolerance for UAVs)
 class UPBFT:
@@ -133,15 +148,16 @@ class UPBFT:
 
     def elect_leader(self):
         """Rotate leader, ensuring it's not malicious."""
-        if self.performance_metrics["total_transactions"] % 10 == 0:
+        for _ in range(len(self.nodes)):  # Ensure we find a non-malicious leader
             self.leader_index = (self.leader_index + 1) % len(self.nodes)
-        self.leader = self.nodes[self.leader_index]
+            self.leader = self.nodes[self.leader_index]
 
-        if self.leader in self.malicious_nodes:
-            print(f"[WARNING] Leader {self.leader} is malicious! Selecting new leader...")
-            self.elect_leader()
+            if self.leader not in self.malicious_nodes:
+                print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
+                return
 
-        print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
+        print("[ERROR] No valid leader found! All nodes are Byzantine!")
+
 
     def optimize_node_selection(self):
         """Select a subset of high-efficiency nodes for consensus."""
@@ -179,10 +195,25 @@ class UPBFT:
             "Average Latency (s)": round(avg_latency, 6)
         }
 
-    def simulate_byzantine_failures(self, failure_rate=0.3):
-        """Randomly introduce Byzantine failures among nodes."""
+    def simulate_byzantine_failures(self, attack_type="double-spend", failure_rate=0.3):
+        """Introduce Byzantine failures dynamically."""
         print("\n[SECURITY TEST] Simulating Byzantine Failures...")
+
         for node in self.nodes:
             if random.random() < failure_rate:
                 self.malicious_nodes.add(node)
+
+        if attack_type == "double-spend":
+            print("[ATTACK] Byzantine nodes are attempting a double-spend attack!")
+
         print(f"[INFO] Byzantine Nodes Introduced: {self.malicious_nodes}")
+
+
+    def detect_byzantine_behavior(self):
+        """Check if Byzantine nodes are disrupting transactions."""
+        print("\n[SECURITY CHECK] Scanning for Byzantine behavior...")
+
+        for node in self.malicious_nodes:
+            print(f"[ALERT] Detected Byzantine activity from: {node}")
+
+        print("[SECURITY CHECK] Byzantine analysis completed.")
