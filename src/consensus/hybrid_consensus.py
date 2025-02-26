@@ -49,6 +49,7 @@ class DAGBlockchain:
         self.graph[genesis.hash] = []
 
     def add_block(self, transactions):
+        """Add a block to the DAG with validation."""
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
         if new_block.verify_signature() and self.validate_block(new_block):
@@ -56,9 +57,12 @@ class DAGBlockchain:
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
             self.graph[new_block.hash] = []
-        return new_block
+            return new_block
+        print(f"[ERROR] Block {new_block.index} failed validation!")
+        return None
 
     def get_parent_blocks(self):
+        """Retrieve parent blocks for the new DAG block."""
         if len(self.blocks) < 2:
             return [self.blocks[-1].hash]
         return [block.hash for block in self.blocks[-2:]]
@@ -78,12 +82,10 @@ class DAGBlockchain:
         print("\n[VALIDATING DAG STRUCTURE]")
 
         for block in self.blocks:
-            # Ensure block hash is correct
             if block.hash != block.compute_hash():
                 print(f"[ERROR] Block {block.index} has an invalid hash!")
                 return False
 
-            # Ensure parent references exist in the blockchain
             for parent in block.previous_hashes:
                 if parent not in self.graph:
                     print(f"[ERROR] Block {block.index} references a missing parent!")
@@ -91,7 +93,6 @@ class DAGBlockchain:
 
         print("[SUCCESS] DAG Blockchain is valid!")
         return True
-
 
     def visualize_dag(self):
         """Generate a full visual representation of the DAG blockchain."""
@@ -125,13 +126,10 @@ class UPBFT:
     def detect_malicious_nodes(self):
         """Detect and isolate malicious nodes."""
         print("\n[SECURITY] Checking for Byzantine behavior...")
-
         for node in self.nodes:
             if self.node_scores[node] < 0.3:  # Assume nodes with score < 0.3 are Byzantine
                 self.malicious_nodes.add(node)
-
         print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
-
 
     def elect_leader(self):
         """Rotate leader, ensuring it's not malicious."""
@@ -184,9 +182,7 @@ class UPBFT:
     def simulate_byzantine_failures(self, failure_rate=0.3):
         """Randomly introduce Byzantine failures among nodes."""
         print("\n[SECURITY TEST] Simulating Byzantine Failures...")
-
         for node in self.nodes:
             if random.random() < failure_rate:
                 self.malicious_nodes.add(node)
-
         print(f"[INFO] Byzantine Nodes Introduced: {self.malicious_nodes}")
