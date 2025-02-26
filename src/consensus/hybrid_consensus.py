@@ -48,24 +48,25 @@ class DAGBlockchain:
         self.blocks.append(genesis)
         self.graph[genesis.hash] = []
 
-    def add_block(self, transactions, proposer_node):
-        """Add a block to the DAG with validation."""
-        if proposer_node in consensus.malicious_nodes:
-            print(f"[SECURITY] Block proposal from malicious node {proposer_node} rejected!")
-            return None  # Reject block from Byzantine node
+    def add_block(self, transactions):
+        """Add a block to the DAG with validation and debugging."""
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
 
-        if self.check_for_conflicts(new_block):
+        print(f"[DEBUG] Attempting to add Block {new_block.index} with transactions: {transactions}")
+
+        if not self.check_for_conflicts(new_block):  # Ensure no conflicting transactions
             print(f"[ERROR] Block {new_block.index} rejected due to conflicts!")
-            return None  # Reject conflicting transactions
+            return None
 
         if new_block.verify_signature() and self.validate_block(new_block):
             self.blocks.append(new_block)
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
             self.graph[new_block.hash] = []
+            print(f"[SUCCESS] Block {new_block.index} added to DAG!")
             return new_block
+
         print(f"[ERROR] Block {new_block.index} failed validation!")
         return None
 
@@ -93,6 +94,10 @@ class DAGBlockchain:
     def validate_dag(self):
         """Validate the integrity of the DAG blockchain structure."""
         print("\n[VALIDATING DAG STRUCTURE]")
+
+        print("\n[TRANSACTIONS IN DAG]")
+        for block in self.blocks:
+            print(f"Block {block.index}: {block.transactions}")
 
         for block in self.blocks:
             if block.hash != block.compute_hash():
@@ -164,19 +169,15 @@ class UPBFT:
         print(f"[SECURITY] Updated Node Pool (Malicious Removed): {self.nodes}")
 
     def elect_leader(self):
-        """Rotate leader every 100 transactions to stabilize consensus."""
-        if self.performance_metrics["total_transactions"] % 100 == 0:  # Rotate every 100 transactions
-            for _ in range(len(self.nodes)):  # Ensure we find a non-malicious leader
-                self.leader_index = (self.leader_index + 1) % len(self.nodes)
-                self.leader = self.nodes[self.leader_index]
-
-            if self.leader not in self.malicious_nodes:
-                return
-            else:
-                print(f"[WARNING] Leader {self.leader} is malicious! Selecting new leader...")
-
-
+        """Rotate leader, ensuring it's not malicious."""
+        while True:
+            self.leader_index = (self.leader_index + 1) % len(self.nodes)
+            self.leader = self.nodes[self.leader_index]
+            if self.leader not in self.malicious_nodes:  # Ensure leader is not malicious
+                break
         print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
+
+
 
 
     def optimize_node_selection(self):
@@ -215,21 +216,23 @@ class UPBFT:
             "Average Latency (s)": round(avg_latency, 6)
         }
 
-    def simulate_byzantine_failures(self, attack_type="double-spend", failure_rate=0.3):
-        """Introduce Byzantine failures dynamically."""
+    def simulate_byzantine_failures(self, failure_rate=0.3):
+        """Randomly introduce Byzantine failures among nodes."""
         print("\n[SECURITY TEST] Simulating Byzantine Failures...")
+        attacked_transactions = []
 
         for node in self.nodes:
             if random.random() < failure_rate:
                 self.malicious_nodes.add(node)
+                attacked_transactions.append(f"FakeTx-{node}")
 
-        if attack_type == "double-spend":
-            print("[ATTACK] Byzantine nodes are attempting a double-spend attack!")
-
-        elif attack_type == "malicious-leader":
-            print("[ATTACK] Malicious leaders are trying to disrupt consensus!")
-
+        if self.malicious_nodes:
+            print(f"[ATTACK] Byzantine nodes {self.malicious_nodes} are attempting a double-spend attack on {attacked_transactions}!")
+    
         print(f"[INFO] Byzantine Nodes Introduced: {self.malicious_nodes}")
+
+
+
 
 
     def detect_byzantine_behavior(self):
