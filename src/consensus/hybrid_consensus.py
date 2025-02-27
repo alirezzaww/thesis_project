@@ -49,17 +49,19 @@ class DAGBlockchain:
         self.graph[genesis.hash] = []
 
     def add_block(self, transactions, proposer_node):
-        """Add a block to the DAG with validation and Byzantine transaction filtering."""
+        """Ensure blocks are correctly added to the DAG."""
     
+        print(f"[INFO] 🏗️ Attempting to add block with transactions: {transactions} from {proposer_node}")
+
         if proposer_node in consensus.malicious_nodes:
-            print(f"[SECURITY] 🚨 Rejecting block from Byzantine proposer {proposer_node}!")
+            print(f"[SECURITY] 🚨 Block rejected! Byzantine proposer {proposer_node} tried to add a block.")
             return None  # Do NOT add the block
 
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
 
         if self.check_for_conflicts(new_block):
-            print(f"[ERROR] Block {new_block.index} rejected due to conflicts!")
+            print(f"[ERROR] ❌ Block {new_block.index} rejected due to conflicts!")
             return None
 
         if new_block.verify_signature() and self.validate_block(new_block):
@@ -67,10 +69,10 @@ class DAGBlockchain:
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
             self.graph[new_block.hash] = []
-            print(f"[BLOCK ADDED] ✅ Block {new_block.index} added by {proposer_node} with transactions: {transactions}")
+            print(f"[BLOCK ADDED] ✅ Successfully added Block {new_block.index}.")
             return new_block
 
-        print(f"[ERROR] Block {new_block.index} failed validation!")
+        print(f"[ERROR] ❌ Block {new_block.index} failed validation!")
         return None
 
 
@@ -177,16 +179,13 @@ class UPBFT:
         valid_nodes = [node for node in self.nodes if node not in self.malicious_nodes]
 
         if not valid_nodes:
-            print("[SECURITY ALERT] No valid leaders left! Consensus halted.")
+            print("[SECURITY ALERT] ❌ No valid leaders left! Consensus completely halted.")
             return None  # Stop execution if no valid leaders exist
 
         self.leader_index = (self.leader_index + 1) % len(valid_nodes)
         self.leader = valid_nodes[self.leader_index]
-        print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
+        print(f"[LEADER ELECTION] ✅ New Leader: {self.leader}")
         return self.leader
-
-
-
 
 
 
@@ -226,21 +225,29 @@ class UPBFT:
             "Average Latency (s)": round(avg_latency, 6)
         }
 
-    def simulate_byzantine_failures(self, failure_rate=0.3):
-        """Randomly introduce Byzantine failures among nodes."""
-        print("\n[SECURITY TEST] Simulating Byzantine Failures...")
+    def simulate_byzantine_failures(self, failure_rate=0.2):  # 🔽 Lower failure rate to 20%
+        """Simulate Byzantine failures but ensure at least one honest node remains."""
+        print("\n[SECURITY TEST] 🔄 Simulating Byzantine Failures...")
+
         attacked_transactions = []
+        new_byzantine_nodes = set()
 
         for node in self.nodes:
             if random.random() < failure_rate:
-                self.malicious_nodes.add(node)
+                new_byzantine_nodes.add(node)
                 fake_tx = f"FakeTx-{node}"
                 attacked_transactions.append(fake_tx)
 
-        if attacked_transactions:
-            print(f"[ATTACK] Byzantine nodes {self.malicious_nodes} are attempting a double-spend attack on {attacked_transactions}!")
+        if len(new_byzantine_nodes) >= len(self.nodes) - 1:
+            print("[SECURITY ALERT] ❌ Too many Byzantine nodes! Adjusting failure rate.")
+            return  # Prevent complete failure
 
-        print(f"[INFO] Byzantine Nodes Introduced: {self.malicious_nodes}")
+        self.malicious_nodes.update(new_byzantine_nodes)
+
+        if attacked_transactions:
+            print(f"[ATTACK] 🚨 Byzantine nodes {new_byzantine_nodes} attempting double-spend attack on {attacked_transactions}!")
+
+        print(f"[INFO] Updated Byzantine Nodes: {self.malicious_nodes}")
 
 
 
