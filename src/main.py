@@ -41,7 +41,8 @@ def process_transaction_batch(batch):
 
 if __name__ == "__main__":
     start_time = time.perf_counter()  # More accurate than time.time()
-    pool = multiprocessing.Pool(processes=2)
+    num_cores = multiprocessing.cpu_count()  # Detect available CPU cores
+    pool = multiprocessing.Pool(processes=min(2, num_cores))  # Adjust for Hetzner's 2 cores
 
     try:
         for i in range(0, len(transactions), BATCH_SIZE):
@@ -59,8 +60,8 @@ if __name__ == "__main__":
     # Validate DAG structure after execution
     blockchain.validate_dag()
 
-    # Print performance metrics
-    print(f"\n[Performance] TPS: {len(transactions) / execution_time:.2f}, Total Execution Time: {execution_time:.2f} seconds")
+    TPS = len(transactions) / execution_time if execution_time > 0 else 0
+    print(f"\n[Performance] TPS: {TPS:.2f}, Total Execution Time: {execution_time:.2f} seconds")
 
     # Simulate Byzantine failures for security testing
     consensus.simulate_byzantine_failures()

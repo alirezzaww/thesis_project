@@ -50,23 +50,20 @@ class DAGBlockchain:
 
     def add_block(self, transactions, proposer_node):
         """Add a block to the DAG with validation and Byzantine transaction filtering."""
-    
-        # If the proposer is a Byzantine node, reject its transactions
-        if proposer_node in self.malicious_nodes:
-            print(f"[SECURITY] 🚨 Rejecting transactions {transactions} from Byzantine node {proposer_node}!")
-            return None  # Do NOT add the block
-
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
-    
-        # Validate block before adding
+        
+        if self.check_for_conflicts(new_block):
+            print(f"[ERROR] Block {new_block.index} rejected due to conflicts!")
+            return None
+        
         if new_block.verify_signature() and self.validate_block(new_block):
             self.blocks.append(new_block)
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
             self.graph[new_block.hash] = []
             return new_block
-
+        
         print(f"[ERROR] Block {new_block.index} failed validation!")
         return None
 
@@ -97,15 +94,10 @@ class DAGBlockchain:
         """Validate the integrity of the DAG blockchain structure."""
         print("\n[VALIDATING DAG STRUCTURE]")
 
-        print("\n[TRANSACTIONS IN DAG]")
-        for block in self.blocks:
-            print(f"Block {block.index}: {block.transactions}")
-
         for block in self.blocks:
             if block.hash != block.compute_hash():
                 print(f"[ERROR] Block {block.index} has an invalid hash!")
                 return False
-
             for parent in block.previous_hashes:
                 if parent not in self.graph:
                     print(f"[ERROR] Block {block.index} references a missing parent!")
@@ -160,15 +152,12 @@ class UPBFT:
         self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}
 
     def detect_malicious_nodes(self):
-        """Detect and isolate malicious nodes."""
         print("\n[SECURITY] Checking for Byzantine behavior...")
         for node in self.nodes:
-            if self.node_scores[node] < 0.3:  # Assume nodes with score < 0.3 are Byzantine
+            if self.node_scores[node] < 0.3:
                 self.malicious_nodes.add(node)
-
-        self.nodes = [node for node in self.nodes if node not in self.malicious_nodes]  # Remove from node pool
+        self.nodes = [node for node in self.nodes if node not in self.malicious_nodes]
         print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
-        print(f"[SECURITY] Updated Node Pool (Malicious Removed): {self.nodes}")
 
 
     def elect_leader(self):
