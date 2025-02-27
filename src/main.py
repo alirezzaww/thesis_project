@@ -13,14 +13,15 @@ consensus.detect_malicious_nodes()
 selected_nodes = consensus.optimize_node_selection()
 
 # Example Transactions
-NUM_TRANSACTIONS = 5000  # Scale up for large tests
-BATCH_SIZE = 100  # Larger batch size for efficiency
+NUM_TRANSACTIONS = 10000  # Scale up for large tests
+BATCH_SIZE = 500  # Larger batch size for efficiency
 transactions = [f"Tx{i}" for i in range(1, NUM_TRANSACTIONS + 1)]
 
 
 def process_transaction_batch(batch):
     """Process a batch of transactions with leader election and consensus rounds."""
-    proposer_node = consensus.elect_leader()  # Select a proposer node
+    consensus.elect_leader()  # Select a proposer node
+    proposer_node = consensus.leader  # Get the current leader
 
     for tx in batch:
         tx_start_time = time.time()
@@ -39,13 +40,13 @@ def process_transaction_batch(batch):
 
 
 if __name__ == "__main__":
-    start_time = time.time()
-    pool = multiprocessing.Pool(processes=4)
+    start_time = time.perf_counter()  # More accurate than time.time()
+    pool = multiprocessing.Pool(processes=2)
 
     try:
         for i in range(0, len(transactions), BATCH_SIZE):
             batch = transactions[i:i + BATCH_SIZE]
-            pool.apply_async(process_transaction_batch, (batch,))
+            pool.apply_async(process_transaction_batch, (batch, start_time))
 
         pool.close()
         pool.join()
@@ -53,7 +54,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[ERROR] Transaction Pooling Failed: {e}")
 
-    execution_time = time.time() - start_time
+    execution_time = time.perf_counter() - start_time
 
     # Validate DAG structure after execution
     blockchain.validate_dag()

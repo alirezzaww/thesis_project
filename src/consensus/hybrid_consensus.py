@@ -48,27 +48,28 @@ class DAGBlockchain:
         self.blocks.append(genesis)
         self.graph[genesis.hash] = []
 
-    def add_block(self, transactions):
-        """Add a block to the DAG with validation and debugging."""
+    def add_block(self, transactions, proposer_node):
+        """Add a block to the DAG with validation and Byzantine transaction filtering."""
+    
+        # If the proposer is a Byzantine node, reject its transactions
+        if proposer_node in self.malicious_nodes:
+            print(f"[SECURITY] 🚨 Rejecting transactions {transactions} from Byzantine node {proposer_node}!")
+            return None  # Do NOT add the block
+
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
-
-        print(f"[DEBUG] Attempting to add Block {new_block.index} with transactions: {transactions}")
-
-        if self.check_for_conflicts(new_block):  # Ensure no conflicting transactions
-            print(f"[ERROR] Block {new_block.index} rejected due to conflicts!")
-            return None
-
+    
+        # Validate block before adding
         if new_block.verify_signature() and self.validate_block(new_block):
             self.blocks.append(new_block)
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
             self.graph[new_block.hash] = []
-            print(f"[SUCCESS] Block {new_block.index} added to DAG!")
             return new_block
 
         print(f"[ERROR] Block {new_block.index} failed validation!")
         return None
+
 
 
     def get_parent_blocks(self):
