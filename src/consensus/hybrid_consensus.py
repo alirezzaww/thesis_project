@@ -50,22 +50,28 @@ class DAGBlockchain:
 
     def add_block(self, transactions, proposer_node):
         """Add a block to the DAG with validation and Byzantine transaction filtering."""
+
+        if proposer_node in consensus.malicious_nodes:
+            print(f"[SECURITY] 🚨 Rejecting transactions {transactions} from Byzantine node {proposer_node}!")
+            return None  # Do NOT add the block
+
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
-        
+
         if self.check_for_conflicts(new_block):
             print(f"[ERROR] Block {new_block.index} rejected due to conflicts!")
             return None
-        
+
         if new_block.verify_signature() and self.validate_block(new_block):
             self.blocks.append(new_block)
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
             self.graph[new_block.hash] = []
             return new_block
-        
+
         print(f"[ERROR] Block {new_block.index} failed validation!")
         return None
+
 
 
 
@@ -119,12 +125,17 @@ class DAGBlockchain:
         plt.figure(figsize=(12, 6))
         pos = nx.spring_layout(dag)
         labels = {node: dag.nodes[node]['label'] for node in dag.nodes}
-    
+
         node_colors = ["red" if node in (malicious_nodes or []) else "lightblue" for node in dag.nodes]
-    
+
         nx.draw(dag, pos, with_labels=True, labels=labels, node_color=node_colors, edge_color='gray', node_size=1500, font_size=10)
         plt.title("DAG Blockchain Structure with Byzantine Nodes Highlighted")
-        plt.show()
+    
+        plt.savefig("dag_structure.png")  # Save DAG as an image
+        print("[INFO] DAG structure saved as dag_structure.png")
+
+        plt.show(block=True)  # Ensure display even in headless environments
+
 
 
     def check_for_conflicts(self, new_block):

@@ -30,7 +30,7 @@ def process_transaction_batch(batch):
         prepared_msg = consensus.prepare(pre_prepared_msg)
 
         if consensus.commit(prepared_msg):
-            blockchain.add_block([tx])  # Fix the argument mismatch
+            blockchain.add_block([tx], proposer_node)  # Pass proposer_node
 
         tx_end_time = time.time()
         latency = tx_end_time - tx_start_time
@@ -42,7 +42,8 @@ def process_transaction_batch(batch):
 if __name__ == "__main__":
     start_time = time.perf_counter()  # More accurate than time.time()
     num_cores = multiprocessing.cpu_count()  # Detect available CPU cores
-    pool = multiprocessing.Pool(processes=min(2, num_cores))  # Adjust for Hetzner's 2 cores
+    num_workers = min(4, num_cores)  # Keep workers slightly higher for overlapping execution
+    pool = multiprocessing.Pool(processes=num_workers)
 
     try:
         for i in range(0, len(transactions), BATCH_SIZE):
@@ -55,12 +56,13 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[ERROR] Transaction Pooling Failed: {e}")
 
-    execution_time = time.perf_counter() - start_time
+    execution_time = max(time.perf_counter() - start_time, 0.01)  # Avoid division by near-zero
+
 
     # Validate DAG structure after execution
     blockchain.validate_dag()
 
-    TPS = len(transactions) / execution_time if execution_time > 0 else 0
+    TPS = len(transactions) / execution_time
     print(f"\n[Performance] TPS: {TPS:.2f}, Total Execution Time: {execution_time:.2f} seconds")
 
     # Simulate Byzantine failures for security testing
