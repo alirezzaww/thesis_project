@@ -55,7 +55,7 @@ class DAGBlockchain:
 
         print(f"[DEBUG] Attempting to add Block {new_block.index} with transactions: {transactions}")
 
-        if not self.check_for_conflicts(new_block):  # Ensure no conflicting transactions
+        if self.check_for_conflicts(new_block):  # Ensure no conflicting transactions
             print(f"[ERROR] Block {new_block.index} rejected due to conflicts!")
             return None
 
@@ -69,6 +69,7 @@ class DAGBlockchain:
 
         print(f"[ERROR] Block {new_block.index} failed validation!")
         return None
+
 
     def get_parent_blocks(self):
         """Retrieve parent blocks for the new DAG block."""
@@ -163,10 +164,11 @@ class UPBFT:
         for node in self.nodes:
             if self.node_scores[node] < 0.3:  # Assume nodes with score < 0.3 are Byzantine
                 self.malicious_nodes.add(node)
+
+        self.nodes = [node for node in self.nodes if node not in self.malicious_nodes]  # Remove from node pool
         print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
-            # Remove Byzantine nodes from node selection to prevent future interference
-        self.nodes = [node for node in self.nodes if node not in self.malicious_nodes]
         print(f"[SECURITY] Updated Node Pool (Malicious Removed): {self.nodes}")
+
 
     def elect_leader(self):
         """Rotate leader, ensuring it's not malicious."""
@@ -224,11 +226,12 @@ class UPBFT:
         for node in self.nodes:
             if random.random() < failure_rate:
                 self.malicious_nodes.add(node)
-                attacked_transactions.append(f"FakeTx-{node}")
+                fake_tx = f"FakeTx-{node}"
+                attacked_transactions.append(fake_tx)
 
-        if self.malicious_nodes:
+        if attacked_transactions:
             print(f"[ATTACK] Byzantine nodes {self.malicious_nodes} are attempting a double-spend attack on {attacked_transactions}!")
-    
+
         print(f"[INFO] Byzantine Nodes Introduced: {self.malicious_nodes}")
 
 
