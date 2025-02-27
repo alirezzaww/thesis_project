@@ -20,8 +20,11 @@ transactions = [f"Tx{i}" for i in range(1, NUM_TRANSACTIONS + 1)]
 
 def process_transaction_batch(batch):
     """Process a batch of transactions with leader election and consensus rounds."""
-    consensus.elect_leader()  # Select a proposer node
-    proposer_node = consensus.leader  # Get the current leader
+    proposer_node = consensus.elect_leader()  # Get a valid leader
+
+    if proposer_node is None:
+        print("[ERROR] No valid proposer found. Skipping batch.")
+        return
 
     for tx in batch:
         tx_start_time = time.time()
@@ -30,13 +33,14 @@ def process_transaction_batch(batch):
         prepared_msg = consensus.prepare(pre_prepared_msg)
 
         if consensus.commit(prepared_msg):
-            blockchain.add_block([tx], proposer_node)  # Pass proposer_node
+            blockchain.add_block([tx], proposer_node)  # Ensure proposer is passed
 
         tx_end_time = time.time()
         latency = tx_end_time - tx_start_time
         print(f"Latency for {tx}: {latency:.6f} seconds")
 
     print(f"[INFO] Batch completed by Leader: {proposer_node}")
+
 
 
 if __name__ == "__main__":
@@ -56,13 +60,13 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[ERROR] Transaction Pooling Failed: {e}")
 
-    execution_time = max(time.perf_counter() - start_time, 0.01)  # Avoid division by near-zero
+    execution_time = max(time.perf_counter() - start_time, 0.01)  # Avoid division by zero
 
 
     # Validate DAG structure after execution
     blockchain.validate_dag()
 
-    TPS = len(transactions) / execution_time
+    TPS = len(transactions) / execution_time if execution_time > 0 else 0
     print(f"\n[Performance] TPS: {TPS:.2f}, Total Execution Time: {execution_time:.2f} seconds")
 
     # Simulate Byzantine failures for security testing

@@ -50,9 +50,9 @@ class DAGBlockchain:
 
     def add_block(self, transactions, proposer_node):
         """Add a block to the DAG with validation and Byzantine transaction filtering."""
-
+    
         if proposer_node in consensus.malicious_nodes:
-            print(f"[SECURITY] 🚨 Rejecting transactions {transactions} from Byzantine node {proposer_node}!")
+            print(f"[SECURITY] 🚨 Rejecting block from Byzantine proposer {proposer_node}!")
             return None  # Do NOT add the block
 
         parent_hashes = self.get_parent_blocks()
@@ -67,6 +67,7 @@ class DAGBlockchain:
             for parent in parent_hashes:
                 self.graph[parent].append(new_block.hash)
             self.graph[new_block.hash] = []
+            print(f"[BLOCK ADDED] ✅ Block {new_block.index} added by {proposer_node} with transactions: {transactions}")
             return new_block
 
         print(f"[ERROR] Block {new_block.index} failed validation!")
@@ -173,12 +174,18 @@ class UPBFT:
 
     def elect_leader(self):
         """Rotate leader, ensuring it's not malicious."""
-        while True:
-            self.leader_index = (self.leader_index + 1) % len(self.nodes)
-            self.leader = self.nodes[self.leader_index]
-            if self.leader not in self.malicious_nodes:  # Ensure leader is not malicious
-                break
+        valid_nodes = [node for node in self.nodes if node not in self.malicious_nodes]
+
+        if not valid_nodes:
+            print("[SECURITY ALERT] No valid leaders left! Consensus halted.")
+            return None  # Stop execution if no valid leaders exist
+
+        self.leader_index = (self.leader_index + 1) % len(valid_nodes)
+        self.leader = valid_nodes[self.leader_index]
         print(f"[LEADER ELECTION] Rotated Leader: {self.leader}")
+        return self.leader
+
+
 
 
 
