@@ -64,16 +64,23 @@ class DAGBlockchain:
             print(f"[ERROR] ❌ Block {new_block.index} rejected due to conflicts!")
             return None
 
-        if new_block.verify_signature() and self.validate_block(new_block):
-            self.blocks.append(new_block)
-            for parent in parent_hashes:
-                self.graph[parent].append(new_block.hash)
-            self.graph[new_block.hash] = []
-            print(f"[BLOCK ADDED] ✅ Successfully added Block {new_block.index}.")
-            return new_block
+        if not new_block.verify_signature():
+            print(f"[ERROR] ❌ Block {new_block.index} has an invalid signature!")
+            return None
 
-        print(f"[ERROR] ❌ Block {new_block.index} failed validation!")
-        return None
+        if not self.validate_block(new_block):
+            print(f"[ERROR] ❌ Block {new_block.index} failed DAG validation!")
+            return None
+
+        self.blocks.append(new_block)
+        for parent in parent_hashes:
+            self.graph[parent].append(new_block.hash)
+        self.graph[new_block.hash] = []
+
+        print(f"[BLOCK ADDED] ✅ Successfully added Block {new_block.index} by {proposer_node}.")
+        return new_block
+
+
 
 
 
@@ -125,12 +132,17 @@ class DAGBlockchain:
             for parent in block.previous_hashes:
                 dag.add_edge(parent, block.hash)
 
+        # Log current blocks in the DAG
+        print(f"[INFO] 🔍 DAG contains {len(self.blocks)} blocks.")
+        for block in self.blocks:
+            print(f"  ➡ Block {block.index}: {block.transactions}")
+
         plt.figure(figsize=(12, 6))
         pos = nx.spring_layout(dag)
         labels = {node: dag.nodes[node]['label'] for node in dag.nodes}
-
+  
         node_colors = ["red" if node in (malicious_nodes or []) else "lightblue" for node in dag.nodes]
-
+  
         nx.draw(dag, pos, with_labels=True, labels=labels, node_color=node_colors, edge_color='gray', node_size=1500, font_size=10)
         plt.title("DAG Blockchain Structure with Byzantine Nodes Highlighted")
     
@@ -174,18 +186,25 @@ class UPBFT:
         print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
 
 
-    def elect_leader(self):
-        """Rotate leader, ensuring it's not malicious."""
+    def elect_leader(self, rounds=3):
+        """Rotate leader every N rounds instead of every batch."""
         valid_nodes = [node for node in self.nodes if node not in self.malicious_nodes]
 
         if not valid_nodes:
-            print("[SECURITY ALERT] ❌ No valid leaders left! Consensus completely halted.")
+            print("[SECURITY ALERT] ❌ No valid leaders left! Consensus halted.")
             return None  # Stop execution if no valid leaders exist
 
+        if hasattr(self, "leader_rounds") and self.leader_rounds < rounds:
+            self.leader_rounds += 1
+            return self.leader  # Keep the same leader for multiple rounds
+
+        self.leader_rounds = 0  # Reset counter
         self.leader_index = (self.leader_index + 1) % len(valid_nodes)
         self.leader = valid_nodes[self.leader_index]
         print(f"[LEADER ELECTION] ✅ New Leader: {self.leader}")
         return self.leader
+
+
 
 
 

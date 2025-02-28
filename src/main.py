@@ -81,4 +81,3 @@ if __name__ == "__main__":
 
     # Visualize DAG structure
     blockchain.visualize_dag()
-
