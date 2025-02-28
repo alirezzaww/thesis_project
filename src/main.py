@@ -1,9 +1,7 @@
 import time
-import multiprocessing
 from consensus.hybrid_consensus import DAGBlockchain, UPBFT
 
-# Initialize Blockchain and Consensus
-blockchain = DAGBlockchain()
+# Initialize Consensus
 consensus = UPBFT(nodes=["Node1", "Node2", "Node3", "Node4"], f=1)
 
 # Detect Byzantine nodes before transactions
@@ -12,15 +10,17 @@ consensus.detect_malicious_nodes()
 # Optimize node selection based on AI-based scoring
 selected_nodes = consensus.optimize_node_selection()
 
+# Initialize Blockchain, passing the same consensus object
+blockchain = DAGBlockchain(consensus=consensus)
+
 # Example Transactions
 NUM_TRANSACTIONS = 10000  # Scale up for large tests
 BATCH_SIZE = 500  # Larger batch size for efficiency
 transactions = [f"Tx{i}" for i in range(1, NUM_TRANSACTIONS + 1)]
 
-
 def process_transaction_batch(batch):
     """Process a batch of transactions with leader election and consensus rounds."""
-    proposer_node = consensus.elect_leader()  # Get a valid leader
+    proposer_node = consensus.elect_leader(rounds=3)  # Keep the same leader for 3 consecutive batches
 
     if proposer_node is None:
         print("[ERROR] ❌ No valid proposer found. Skipping batch.")
@@ -47,37 +47,26 @@ def process_transaction_batch(batch):
 
     print(f"[INFO] ✅ Batch completed by Leader: {proposer_node}")
 
-
 if __name__ == "__main__":
     start_time = time.perf_counter()  # More accurate than time.time()
-    num_cores = multiprocessing.cpu_count()  # Detect available CPU cores
-    num_workers = min(4, num_cores)  # Keep workers slightly higher for overlapping execution
-    pool = multiprocessing.Pool(processes=num_workers)
 
-    try:
-        for i in range(0, len(transactions), BATCH_SIZE):
-            batch = transactions[i:i + BATCH_SIZE]
-            pool.apply_async(process_transaction_batch, (batch,))
+    # Process transactions in a single loop without multiprocessing
+    for i in range(0, len(transactions), BATCH_SIZE):
+        batch = transactions[i:i + BATCH_SIZE]
+        process_transaction_batch(batch)
 
-        pool.close()
-        pool.join()
-
-    except Exception as e:
-        print(f"[ERROR] Transaction Pooling Failed: {e}")
-
-    execution_time = max(time.perf_counter() - start_time, 0.1)  # Ensure at least 0.1s execution time
+    execution_time = max(time.perf_counter() - start_time, 0.1)
 
     # Validate DAG structure after execution
     blockchain.validate_dag()
 
-    # Calculate TPS based on confirmed transactions
-    confirmed_tx = sum(len(block.transactions) for block in blockchain.blocks)  # Count only confirmed transactions
+    # Calculate TPS based on confirmed transactions in the DAG
+    confirmed_tx = sum(len(block.transactions) for block in blockchain.blocks)
     TPS = confirmed_tx / execution_time if execution_time > 0 else 0
-
     print(f"\n[Performance] 📊 TPS: {TPS:.2f}, Total Execution Time: {execution_time:.2f} seconds")
 
     # Simulate Byzantine failures for security testing
     consensus.simulate_byzantine_failures()
 
     # Visualize DAG structure
-    blockchain.visualize_dag()
+    blockchain.visualize_dag(malicious_nodes=consensus.malicious_nodes)

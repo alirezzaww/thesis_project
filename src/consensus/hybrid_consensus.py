@@ -7,14 +7,12 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from collections import defaultdict
 
-# Generate RSA keys for signing
 (public_key, private_key) = rsa.newkeys(512)
 
-# Define a Block in the DAG
 class Block:
     def __init__(self, index, previous_hashes, transactions, timestamp=None):
         self.index = index
-        self.previous_hashes = previous_hashes  # Multiple parents (DAG structure)
+        self.previous_hashes = previous_hashes
         self.transactions = transactions
         self.timestamp = timestamp or time.time()
         self.hash = self.compute_hash()
@@ -25,22 +23,20 @@ class Block:
         return hashlib.sha256(block_data.encode()).hexdigest()
 
     def sign_block(self):
-        """Sign the block with RSA private key."""
         return rsa.sign(self.hash.encode(), private_key, 'SHA-256')
 
     def verify_signature(self):
-        """Verify the block's signature using the public key."""
         try:
             rsa.verify(self.hash.encode(), self.signature, public_key)
             return True
         except rsa.VerificationError:
             return False
 
-# DAG-based Blockchain
 class DAGBlockchain:
-    def __init__(self):
+    def __init__(self, consensus):
+        self.consensus = consensus
         self.blocks = []
-        self.graph = defaultdict(list)  # DAG adjacency list
+        self.graph = defaultdict(list)
         self.genesis_block()
 
     def genesis_block(self):
@@ -49,16 +45,18 @@ class DAGBlockchain:
         self.graph[genesis.hash] = []
 
     def add_block(self, transactions, proposer_node):
-        """Ensure blocks are correctly added to the DAG."""
-    
         print(f"[INFO] 🏗️ Attempting to add block with transactions: {transactions} from {proposer_node}")
 
-        if proposer_node in consensus.malicious_nodes:
+        if proposer_node in self.consensus.malicious_nodes:
             print(f"[SECURITY] 🚨 Block rejected! Byzantine proposer {proposer_node} tried to add a block.")
-            return None  # Do NOT add the block
+            return None
 
         parent_hashes = self.get_parent_blocks()
         new_block = Block(len(self.blocks), parent_hashes, transactions)
+        print(f"[DEBUG] 🧱 Creating Block {new_block.index}:")
+        print(f"        Hash: {new_block.hash}")
+        print(f"        Parents: {parent_hashes}")
+        print(f"        Transactions: {transactions}")
 
         if self.check_for_conflicts(new_block):
             print(f"[ERROR] ❌ Block {new_block.index} rejected due to conflicts!")
@@ -78,23 +76,15 @@ class DAGBlockchain:
         self.graph[new_block.hash] = []
 
         print(f"[BLOCK ADDED] ✅ Successfully added Block {new_block.index} by {proposer_node}.")
+        print(f"             DAG now has {len(self.blocks)} blocks.")
         return new_block
 
-
-
-
-
-
     def get_parent_blocks(self):
-        """Retrieve parent blocks for the new DAG block."""
         if len(self.blocks) < 2:
             return [self.blocks[-1].hash]
-        
-        # Select last 3 parent blocks to improve DAG branching structure
         return [block.hash for block in self.blocks[-3:]]
 
     def validate_block(self, block):
-        """Ensure block integrity and proper referencing of parent blocks."""
         if block.compute_hash() != block.hash:
             print(f"[DAG VALIDATION ERROR] Block {block.index} has an incorrect hash!")
             return False
@@ -105,11 +95,9 @@ class DAGBlockchain:
             print(f"[DAG VALIDATION ERROR] Block {block.index} references non-existent parent blocks!")
             return False
         return True
-    
-    def validate_dag(self):
-        """Validate the integrity of the DAG blockchain structure."""
-        print("\n[VALIDATING DAG STRUCTURE]")
 
+    def validate_dag(self):
+        print("\n[VALIDATING DAG STRUCTURE]")
         for block in self.blocks:
             if block.hash != block.compute_hash():
                 print(f"[ERROR] Block {block.index} has an invalid hash!")
@@ -118,64 +106,65 @@ class DAGBlockchain:
                 if parent not in self.graph:
                     print(f"[ERROR] Block {block.index} references a missing parent!")
                     return False
-
         print("[SUCCESS] DAG Blockchain is valid!")
         return True
 
     def visualize_dag(self, malicious_nodes=None):
-        """Generate a full visual representation of the DAG blockchain."""
-        print("\n[DAG Blockchain Structure]")
-
+        print("\n[DAG Blockchain Structure Visualization]")
         dag = nx.DiGraph()
         for block in self.blocks:
             dag.add_node(block.hash, label=f"Block {block.index}")
             for parent in block.previous_hashes:
                 dag.add_edge(parent, block.hash)
 
-        # Log current blocks in the DAG
-        print(f"[INFO] 🔍 DAG contains {len(self.blocks)} blocks.")
-        for block in self.blocks:
-            print(f"  ➡ Block {block.index}: {block.transactions}")
+        print(f"[INFO] DAG contains {len(self.blocks)} blocks. Listing blocks:")
+        for b in self.blocks:
+            print(f"  ➡ Block {b.index}: Transactions: {b.transactions}")
 
         plt.figure(figsize=(12, 6))
         pos = nx.spring_layout(dag)
         labels = {node: dag.nodes[node]['label'] for node in dag.nodes}
-  
-        node_colors = ["red" if node in (malicious_nodes or []) else "lightblue" for node in dag.nodes]
-  
-        nx.draw(dag, pos, with_labels=True, labels=labels, node_color=node_colors, edge_color='gray', node_size=1500, font_size=10)
+
+        node_colors = [
+            "red" if node in (malicious_nodes or []) else "lightblue"
+            for node in dag.nodes
+        ]
+        nx.draw(
+            dag,
+            pos,
+            with_labels=True,
+            labels=labels,
+            node_color=node_colors,
+            edge_color="gray",
+            node_size=1500,
+            font_size=10,
+        )
         plt.title("DAG Blockchain Structure with Byzantine Nodes Highlighted")
-    
-        plt.savefig("dag_structure.png")  # Save DAG as an image
-        print("[INFO] DAG structure saved as dag_structure.png")
-
-        plt.show(block=True)  # Ensure display even in headless environments
-
-
+        plt.savefig("dag_structure.png")
+        print("[INFO] DAG structure image saved as dag_structure.png")
+        plt.show(block=True)
 
     def check_for_conflicts(self, new_block):
-        """Detects double-spending attempts in the DAG blockchain."""
         all_transactions = set()
-
         for block in self.blocks:
             for tx in block.transactions:
-                if tx in all_transactions:
-                    print(f"[SECURITY ALERT] Double-spending detected for transaction {tx}!")
-                    return True  # Conflict detected
+                if tx in new_block.transactions:
+                    print(f"[SECURITY ALERT] Double-spend detected for transaction {tx}!")
+                    return True
                 all_transactions.add(tx)
-        return False  # No conflict
+        return False
 
 
-
-# U-PBFT (Hierarchical Byzantine Fault Tolerance for UAVs)
 class UPBFT:
     def __init__(self, nodes, f):
         self.nodes = nodes
-        self.f = f  # Max Byzantine nodes tolerated
-        self.leader_index = 0  # Index for round-robin leader rotation
+        self.f = f
+        self.leader_index = 0
         self.malicious_nodes = set()
-        self.node_scores = {node: np.random.uniform(0, 1) for node in self.nodes}  # AI-based ranking
+        self.node_scores = {node: np.random.uniform(0, 1) for node in self.nodes}
         self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}
+        self.leader_rounds = 0
+        self.leader = None
 
     def detect_malicious_nodes(self):
         print("\n[SECURITY] Checking for Byzantine behavior...")
@@ -185,55 +174,41 @@ class UPBFT:
         self.nodes = [node for node in self.nodes if node not in self.malicious_nodes]
         print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
 
-
     def elect_leader(self, rounds=3):
-        """Rotate leader every N rounds instead of every batch."""
         valid_nodes = [node for node in self.nodes if node not in self.malicious_nodes]
-
         if not valid_nodes:
             print("[SECURITY ALERT] ❌ No valid leaders left! Consensus halted.")
-            return None  # Stop execution if no valid leaders exist
+            return None
 
-        if hasattr(self, "leader_rounds") and self.leader_rounds < rounds:
+        if self.leader and self.leader_rounds < rounds:
             self.leader_rounds += 1
-            return self.leader  # Keep the same leader for multiple rounds
+            return self.leader
 
-        self.leader_rounds = 0  # Reset counter
+        self.leader_rounds = 1
         self.leader_index = (self.leader_index + 1) % len(valid_nodes)
         self.leader = valid_nodes[self.leader_index]
         print(f"[LEADER ELECTION] ✅ New Leader: {self.leader}")
         return self.leader
 
-
-
-
-
     def optimize_node_selection(self):
-        """Select a subset of high-efficiency nodes for consensus."""
         sorted_nodes = sorted(self.node_scores.items(), key=lambda x: x[1], reverse=True)
         selected_nodes = [node for node, score in sorted_nodes if node not in self.malicious_nodes]
-
         if len(selected_nodes) < self.f + 1:
             print("[SECURITY ALERT] Too many malicious nodes! Consensus may fail.")
-
         print(f"[INFO] Optimized Node Selection: {selected_nodes}")
         return selected_nodes
 
     def pre_prepare(self, transaction):
-        """Simulate pre-prepare step in PBFT."""
         return f"PrePrepared({transaction})"
 
     def prepare(self, pre_prepared_msg):
-        """Simulate prepare step in PBFT."""
         return f"Prepared({pre_prepared_msg})"
 
     def commit(self, prepared_msg):
-        """Simulate commit step in PBFT."""
         self.performance_metrics["total_transactions"] += 1
         return True
 
     def get_performance_metrics(self):
-        """Calculate TPS & Latency."""
         total_time = max(self.performance_metrics["total_time"], 0.0001)
         tps = self.performance_metrics["total_transactions"] / total_time
         avg_latency = self.performance_metrics["total_time"] / max(1, self.performance_metrics["total_transactions"])
@@ -244,39 +219,23 @@ class UPBFT:
             "Average Latency (s)": round(avg_latency, 6)
         }
 
-    def simulate_byzantine_failures(self, failure_rate=0.2):  # 🔽 Lower failure rate to 20%
-        """Simulate Byzantine failures but ensure at least one honest node remains."""
+    def simulate_byzantine_failures(self, failure_rate=0.3):
         print("\n[SECURITY TEST] 🔄 Simulating Byzantine Failures...")
-
         attacked_transactions = []
         new_byzantine_nodes = set()
-
         for node in self.nodes:
             if random.random() < failure_rate:
                 new_byzantine_nodes.add(node)
                 fake_tx = f"FakeTx-{node}"
                 attacked_transactions.append(fake_tx)
-
-        if len(new_byzantine_nodes) >= len(self.nodes) - 1:
-            print("[SECURITY ALERT] ❌ Too many Byzantine nodes! Adjusting failure rate.")
-            return  # Prevent complete failure
-
-        self.malicious_nodes.update(new_byzantine_nodes)
-
-        if attacked_transactions:
+        if new_byzantine_nodes:
             print(f"[ATTACK] 🚨 Byzantine nodes {new_byzantine_nodes} attempting double-spend attack on {attacked_transactions}!")
-
+        self.malicious_nodes.update(new_byzantine_nodes)
+        self.nodes = [n for n in self.nodes if n not in self.malicious_nodes]
         print(f"[INFO] Updated Byzantine Nodes: {self.malicious_nodes}")
 
-
-
-
-
     def detect_byzantine_behavior(self):
-        """Check if Byzantine nodes are disrupting transactions."""
         print("\n[SECURITY CHECK] Scanning for Byzantine behavior...")
-
         for node in self.malicious_nodes:
             print(f"[ALERT] Detected Byzantine activity from: {node}")
-
         print("[SECURITY CHECK] Byzantine analysis completed.")
