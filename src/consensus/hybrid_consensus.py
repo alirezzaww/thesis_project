@@ -109,26 +109,45 @@ class DAGBlockchain:
         print("[SUCCESS] DAG Blockchain is valid!")
         return True
 
-    def visualize_dag(self, malicious_nodes=None):
-        print("\n[DAG Blockchain Structure Visualization]")
-        dag = nx.DiGraph()
-        for block in self.blocks:
-            dag.add_node(block.hash, label=f"Block {block.index}")
-            for parent in block.previous_hashes:
-                dag.add_edge(parent, block.hash)
+    def visualize_dag(self, malicious_nodes=None, num_blocks=50):
+        """
+        Visualize only the last `num_blocks` blocks to keep the diagram readable.
+        Example: blockchain.visualize_dag(malicious_nodes=consensus.malicious_nodes, num_blocks=50)
+        """
 
-        print(f"[INFO] DAG contains {len(self.blocks)} blocks. Listing blocks:")
-        for b in self.blocks:
+        print("\n[DAG Blockchain Structure Visualization]")
+
+        # 1. Subset blocks (only the last `num_blocks`)
+        if len(self.blocks) > num_blocks:
+            subset_blocks = self.blocks[-num_blocks:]
+        else:
+            subset_blocks = self.blocks
+
+        subset_hashes = {blk.hash for blk in subset_blocks}
+        dag = nx.DiGraph()
+
+        # 2. Build subgraph using only those blocks (and edges within the subset)
+        for blk in subset_blocks:
+            dag.add_node(blk.hash, label=f"Block {blk.index}")
+            for parent in blk.previous_hashes:
+                if parent in subset_hashes:
+                    dag.add_edge(parent, blk.hash)
+
+        # 3. Log the subset
+        print(f"[INFO] Subset of DAG: {len(subset_blocks)} blocks (out of {len(self.blocks)} total).")
+        for b in subset_blocks:
             print(f"  ➡ Block {b.index}: Transactions: {b.transactions}")
 
+        # 4. Draw the subgraph
         plt.figure(figsize=(12, 6))
-        pos = nx.spring_layout(dag)
+        pos = nx.spring_layout(dag, seed=42)  # fixed seed for reproducibility
         labels = {node: dag.nodes[node]['label'] for node in dag.nodes}
 
         node_colors = [
             "red" if node in (malicious_nodes or []) else "lightblue"
             for node in dag.nodes
         ]
+
         nx.draw(
             dag,
             pos,
@@ -139,15 +158,22 @@ class DAGBlockchain:
             node_size=1500,
             font_size=10,
         )
-        plt.title("DAG Blockchain Structure with Byzantine Nodes Highlighted")
-        plt.savefig("dag_structure.png")
-        print("[INFO] DAG structure image saved as dag_structure.png")
+        plt.title(f"DAG Blockchain (Last {num_blocks} Blocks)")
+
+        plt.savefig("dag_structure_subset.png")
+        print("[INFO] DAG subset image saved as dag_structure_subset.png")
+
         plt.show(block=True)
 
     def check_for_conflicts(self, new_block):
+        """
+        Detects double-spending attempts in the DAG blockchain by scanning all existing transactions.
+        If any transaction in 'new_block' is already present, we consider it a conflict.
+        """
         all_transactions = set()
-        for block in self.blocks:
-            for tx in block.transactions:
+        for blk in self.blocks:
+            for tx in blk.transactions:
+                # If tx is found again, it's a potential double-spend
                 if tx in new_block.transactions:
                     print(f"[SECURITY ALERT] Double-spend detected for transaction {tx}!")
                     return True
