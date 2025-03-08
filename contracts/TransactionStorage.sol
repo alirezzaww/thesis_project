@@ -1,29 +1,34 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.28;
 
 contract TransactionStorage {
     struct Transaction {
-        uint id;
-        address sender;
-        address receiver;
-        uint amount;
+        uint256 id;
+        string details;
         bool isFraudulent;
     }
 
-    Transaction[] public transactions;
-    mapping(uint => bool) public flaggedTransactions;
+    mapping(uint256 => Transaction) public transactions;
+    uint256 public transactionCount;
 
-    event TransactionAdded(uint id, address sender, address receiver, uint amount);
-    event FraudDetected(uint id);
+    event TransactionAdded(uint256 id, string details, bool isFraudulent);
+    event TransactionFlagged(uint256 id);
 
-    function addTransaction(uint _id, address _receiver, uint _amount) public {
-        transactions.push(Transaction(_id, msg.sender, _receiver, _amount, false));
-        emit TransactionAdded(_id, msg.sender, _receiver, _amount);
+    function storeTransaction(uint256 _id, string memory _details, bool _isFraudulent) public {
+        transactions[_id] = Transaction(_id, _details, _isFraudulent);
+        transactionCount++;
+
+        emit TransactionAdded(_id, _details, _isFraudulent);
     }
 
-    function flagTransaction(uint _id) public {
-        flaggedTransactions[_id] = true;
-        emit FraudDetected(_id);
+    function flagTransaction(uint256 _id) public {
+        require(transactions[_id].id != 0, "Transaction does not exist.");
+        transactions[_id].isFraudulent = true;
+
+        emit TransactionFlagged(_id);
+    }
+
+    function getTransaction(uint256 _id) public view returns (Transaction memory) {
+        return transactions[_id];
     }
 }
-

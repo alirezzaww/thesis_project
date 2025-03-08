@@ -1,0 +1,8 @@
+await contract.getTransaction(1);
+await contract.flagTransaction(1);
+await contract.getTransaction(1);
+await contract.storeTransaction(1, "Test Transaction", false);
+await contract.transactionCount();
+const contract = await ethers.getContractAt("TransactionStorage", "0x5FbDB2315678afecb367f032d93F642f64180aa3");
+await contract.transactionCount();
+const contract = await ethers.getContractAt("TransactionStorage", "DEPLOYED_CONTRACT_ADDRESS");

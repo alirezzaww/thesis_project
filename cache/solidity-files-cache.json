@@ -38,8 +38,8 @@
       ]
     },
     "/root/thesis_project/contracts/TransactionStorage.sol": {
-      "lastModificationDate": 1740407091442,
-      "contentHash": "5410abd7328c3f07cc996cdd52fa254a",
+      "lastModificationDate": 1741453872809,
+      "contentHash": "acba843908f67cade99ae8f428d15002",
       "sourceName": "contracts/TransactionStorage.sol",
       "solcConfig": {
         "version": "0.8.28",
@@ -67,7 +67,7 @@
       },
       "imports": [],
       "versionPragmas": [
-        "^0.8.0"
+        "^0.8.28"
       ],
       "artifacts": [
         "TransactionStorage"
