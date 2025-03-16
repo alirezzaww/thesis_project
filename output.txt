@@ -1,1022 +1,1023 @@
 [INFO] ✅ Genesis Block Created with Trust Score 1.0.
 
 [SECURITY] Checking for Byzantine behavior...
-[INFO] Malicious Nodes Detected: {'Node2', 'Node3'}
-[INFO] Optimized Node Selection: ['Node1', 'Node4']
-[LEADER ELECTION] ✅ New Leader: Node4 (Trust Score: 0.78)
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx1'] from Node4
+[INFO] Malicious Nodes Detected: {'Node3'}
+[INFO] Optimized Node Selection: ['Node2', 'Node4', 'Node1']
+[LEADER ELECTION] ✅ New Leader: Node2 (Trust Score: 0.55)
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx1'] from Node2
 [DAG VALIDATION] ✅ Block 1 is valid.
-[BLOCK ADDED] ✅ Block 1 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx2'] from Node4
+[BLOCK ADDED] ✅ Block 1 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx2'] from Node2
 [DAG VALIDATION] ✅ Block 2 is valid.
-[BLOCK ADDED] ✅ Block 2 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx3'] from Node4
+[BLOCK ADDED] ✅ Block 2 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx3'] from Node2
 [DAG VALIDATION] ✅ Block 3 is valid.
-[BLOCK ADDED] ✅ Block 3 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx4'] from Node4
+[BLOCK ADDED] ✅ Block 3 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx4'] from Node2
 [DAG VALIDATION] ✅ Block 4 is valid.
-[BLOCK ADDED] ✅ Block 4 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx5'] from Node4
+[BLOCK ADDED] ✅ Block 4 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx5'] from Node2
 [DAG VALIDATION] ✅ Block 5 is valid.
-[BLOCK ADDED] ✅ Block 5 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx6'] from Node4
+[BLOCK ADDED] ✅ Block 5 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx6'] from Node2
 [DAG VALIDATION] ✅ Block 6 is valid.
-[BLOCK ADDED] ✅ Block 6 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx7'] from Node4
+[BLOCK ADDED] ✅ Block 6 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx7'] from Node2
 [DAG VALIDATION] ✅ Block 7 is valid.
-[BLOCK ADDED] ✅ Block 7 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx8'] from Node4
+[BLOCK ADDED] ✅ Block 7 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx8'] from Node2
 [DAG VALIDATION] ✅ Block 8 is valid.
-[BLOCK ADDED] ✅ Block 8 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx9'] from Node4
-[SECURITY] 🔄 Block 9 ALMOST passed, retrying (attempt 1/3)...
-[SECURITY] 🔄 Block 9 ALMOST passed, retrying validation...
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx10'] from Node4
-[SECURITY] 🔄 Block 9 ALMOST passed, retrying (attempt 2/3)...
-[SECURITY] 🔄 Block 9 ALMOST passed, retrying validation...
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx11'] from Node4
-[SECURITY] 🔄 Block 9 ALMOST passed, retrying (attempt 3/3)...
-[SECURITY] 🔄 Block 9 ALMOST passed, retrying validation...
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx12'] from Node4
-[SECURITY] ⚠️ Block 9 FORCED ACCEPTANCE after 3 retries!
-[BLOCK ADDED] ✅ Block 9 by Node4 (Trust Score: 0.78).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx13'] from Node4
-[SECURITY] ❌ Block 10 rejected! Trust weight too low (2.33 < 2.70).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx14'] from Node4
-[SECURITY] ❌ Block 10 rejected! Trust weight too low (2.33 < 2.70).
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx15'] from Node4
-[SECURITY] ❌ Block 10 rejected! Trust weight too low (2.33 < 2.70).
-[SECURITY ALERT] 🚨 Proposer Node4 blacklisted due to repeated failures.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx16'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx17'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx18'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx19'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx20'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx21'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx22'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx23'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx24'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx25'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx26'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx27'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx28'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx29'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx30'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx31'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx32'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx33'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx34'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx35'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx36'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx37'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx38'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx39'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx40'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx41'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx42'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx43'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx44'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx45'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx46'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx47'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx48'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx49'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx50'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx51'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx52'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx53'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx54'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx55'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx56'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx57'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx58'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx59'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx60'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx61'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx62'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx63'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx64'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx65'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx66'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx67'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx68'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx69'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx70'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx71'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx72'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx73'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx74'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx75'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx76'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx77'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx78'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx79'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx80'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx81'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx82'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx83'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx84'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx85'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx86'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx87'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx88'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx89'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx90'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx91'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx92'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx93'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx94'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx95'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx96'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx97'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx98'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx99'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx100'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx101'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx102'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx103'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx104'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx105'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx106'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx107'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx108'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx109'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx110'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx111'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx112'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx113'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx114'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx115'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx116'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx117'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx118'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx119'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx120'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx121'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx122'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx123'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx124'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx125'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx126'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx127'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx128'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx129'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx130'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx131'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx132'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx133'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx134'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx135'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx136'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx137'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx138'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx139'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx140'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx141'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx142'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx143'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx144'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx145'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx146'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx147'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx148'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx149'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx150'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx151'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx152'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx153'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx154'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx155'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx156'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx157'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx158'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx159'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx160'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx161'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx162'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx163'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx164'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx165'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx166'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx167'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx168'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx169'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx170'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx171'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx172'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx173'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx174'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx175'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx176'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx177'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx178'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx179'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx180'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx181'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx182'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx183'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx184'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx185'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx186'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx187'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx188'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx189'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx190'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx191'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx192'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx193'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx194'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx195'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx196'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx197'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx198'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx199'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx200'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx201'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx202'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx203'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx204'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx205'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx206'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx207'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx208'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx209'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx210'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx211'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx212'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx213'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx214'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx215'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx216'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx217'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx218'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx219'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx220'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx221'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx222'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx223'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx224'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx225'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx226'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx227'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx228'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx229'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx230'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx231'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx232'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx233'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx234'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx235'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx236'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx237'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx238'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx239'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx240'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx241'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx242'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx243'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx244'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx245'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx246'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx247'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx248'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx249'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx250'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx251'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx252'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx253'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx254'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx255'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx256'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx257'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx258'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx259'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx260'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx261'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx262'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx263'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx264'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx265'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx266'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx267'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx268'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx269'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx270'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx271'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx272'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx273'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx274'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx275'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx276'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx277'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx278'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx279'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx280'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx281'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx282'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx283'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx284'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx285'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx286'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx287'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx288'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx289'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx290'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx291'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx292'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx293'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx294'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx295'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx296'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx297'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx298'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx299'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx300'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx301'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx302'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx303'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx304'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx305'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx306'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx307'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx308'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx309'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx310'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx311'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx312'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx313'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx314'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx315'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx316'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx317'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx318'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx319'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx320'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx321'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx322'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx323'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx324'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx325'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx326'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx327'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx328'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx329'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx330'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx331'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx332'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx333'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx334'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx335'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx336'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx337'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx338'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx339'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx340'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx341'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx342'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx343'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx344'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx345'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx346'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx347'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx348'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx349'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx350'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx351'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx352'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx353'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx354'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx355'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx356'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx357'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx358'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx359'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx360'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx361'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx362'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx363'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx364'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx365'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx366'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx367'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx368'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx369'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx370'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx371'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx372'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx373'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx374'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx375'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx376'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx377'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx378'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx379'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx380'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx381'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx382'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx383'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx384'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx385'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx386'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx387'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx388'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx389'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx390'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx391'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx392'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx393'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx394'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx395'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx396'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx397'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx398'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx399'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx400'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx401'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx402'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx403'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx404'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx405'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx406'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx407'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx408'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx409'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx410'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx411'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx412'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx413'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx414'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx415'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx416'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx417'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx418'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx419'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx420'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx421'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx422'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx423'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx424'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx425'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx426'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx427'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx428'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx429'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx430'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx431'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx432'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx433'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx434'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx435'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx436'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx437'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx438'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx439'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx440'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx441'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx442'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx443'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx444'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx445'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx446'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx447'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx448'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx449'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx450'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx451'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx452'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx453'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx454'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx455'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx456'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx457'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx458'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx459'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx460'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx461'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx462'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx463'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx464'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx465'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx466'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx467'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx468'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx469'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx470'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx471'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx472'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx473'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx474'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx475'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx476'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx477'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx478'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx479'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx480'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx481'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx482'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx483'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx484'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx485'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx486'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx487'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx488'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx489'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx490'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx491'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx492'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx493'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx494'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx495'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx496'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx497'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx498'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx499'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
-[INFO] 🏗️ Attempting to add block with transactions: ['Tx500'] from Node4
-[SECURITY] 🚨 Block rejected! Byzantine proposer Node4 detected.
+[BLOCK ADDED] ✅ Block 8 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx9'] from Node2
+[DAG VALIDATION] ✅ Block 9 is valid.
+[BLOCK ADDED] ✅ Block 9 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx10'] from Node2
+[SECURITY] 🔄 Block 10 ALMOST passed, retrying (attempt 1/3)...
+[SECURITY] 🔄 Block 10 ALMOST passed, retrying validation...
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx11'] from Node2
+[SECURITY] 🔄 Block 10 ALMOST passed, retrying (attempt 2/3)...
+[SECURITY] 🔄 Block 10 ALMOST passed, retrying validation...
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx12'] from Node2
+[SECURITY] 🔄 Block 10 ALMOST passed, retrying (attempt 3/3)...
+[SECURITY] 🔄 Block 10 ALMOST passed, retrying validation...
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx13'] from Node2
+[SECURITY] ⚠️ Block 10 FORCED ACCEPTANCE after 3 retries!
+[BLOCK ADDED] ✅ Block 10 by Node2 (Trust Score: 0.55).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx14'] from Node2
+[SECURITY] ❌ Block 11 rejected! Trust weight too low (1.64 < 1.94).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx15'] from Node2
+[SECURITY] ❌ Block 11 rejected! Trust weight too low (1.64 < 1.94).
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx16'] from Node2
+[SECURITY] ❌ Block 11 rejected! Trust weight too low (1.64 < 1.94).
+[SECURITY ALERT] 🚨 Proposer Node2 blacklisted due to repeated failures.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx17'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx18'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx19'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx20'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx21'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx22'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx23'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx24'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx25'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx26'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx27'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx28'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx29'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx30'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx31'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx32'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx33'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx34'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx35'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx36'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx37'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx38'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx39'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx40'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx41'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx42'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx43'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx44'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx45'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx46'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx47'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx48'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx49'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx50'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx51'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx52'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx53'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx54'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx55'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx56'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx57'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx58'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx59'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx60'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx61'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx62'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx63'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx64'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx65'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx66'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx67'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx68'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx69'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx70'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx71'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx72'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx73'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx74'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx75'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx76'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx77'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx78'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx79'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx80'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx81'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx82'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx83'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx84'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx85'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx86'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx87'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx88'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx89'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx90'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx91'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx92'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx93'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx94'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx95'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx96'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx97'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx98'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx99'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx100'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx101'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx102'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx103'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx104'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx105'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx106'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx107'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx108'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx109'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx110'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx111'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx112'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx113'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx114'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx115'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx116'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx117'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx118'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx119'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx120'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx121'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx122'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx123'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx124'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx125'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx126'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx127'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx128'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx129'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx130'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx131'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx132'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx133'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx134'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx135'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx136'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx137'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx138'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx139'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx140'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx141'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx142'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx143'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx144'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx145'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx146'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx147'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx148'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx149'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx150'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx151'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx152'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx153'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx154'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx155'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx156'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx157'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx158'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx159'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx160'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx161'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx162'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx163'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx164'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx165'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx166'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx167'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx168'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx169'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx170'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx171'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx172'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx173'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx174'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx175'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx176'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx177'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx178'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx179'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx180'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx181'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx182'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx183'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx184'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx185'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx186'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx187'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx188'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx189'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx190'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx191'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx192'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx193'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx194'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx195'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx196'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx197'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx198'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx199'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx200'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx201'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx202'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx203'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx204'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx205'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx206'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx207'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx208'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx209'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx210'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx211'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx212'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx213'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx214'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx215'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx216'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx217'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx218'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx219'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx220'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx221'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx222'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx223'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx224'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx225'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx226'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx227'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx228'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx229'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx230'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx231'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx232'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx233'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx234'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx235'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx236'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx237'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx238'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx239'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx240'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx241'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx242'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx243'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx244'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx245'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx246'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx247'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx248'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx249'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx250'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx251'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx252'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx253'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx254'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx255'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx256'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx257'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx258'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx259'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx260'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx261'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx262'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx263'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx264'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx265'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx266'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx267'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx268'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx269'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx270'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx271'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx272'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx273'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx274'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx275'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx276'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx277'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx278'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx279'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx280'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx281'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx282'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx283'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx284'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx285'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx286'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx287'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx288'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx289'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx290'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx291'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx292'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx293'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx294'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx295'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx296'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx297'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx298'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx299'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx300'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx301'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx302'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx303'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx304'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx305'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx306'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx307'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx308'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx309'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx310'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx311'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx312'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx313'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx314'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx315'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx316'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx317'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx318'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx319'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx320'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx321'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx322'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx323'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx324'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx325'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx326'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx327'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx328'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx329'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx330'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx331'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx332'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx333'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx334'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx335'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx336'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx337'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx338'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx339'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx340'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx341'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx342'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx343'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx344'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx345'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx346'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx347'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx348'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx349'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx350'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx351'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx352'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx353'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx354'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx355'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx356'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx357'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx358'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx359'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx360'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx361'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx362'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx363'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx364'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx365'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx366'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx367'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx368'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx369'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx370'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx371'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx372'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx373'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx374'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx375'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx376'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx377'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx378'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx379'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx380'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx381'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx382'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx383'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx384'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx385'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx386'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx387'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx388'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx389'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx390'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx391'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx392'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx393'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx394'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx395'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx396'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx397'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx398'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx399'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx400'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx401'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx402'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx403'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx404'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx405'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx406'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx407'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx408'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx409'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx410'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx411'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx412'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx413'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx414'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx415'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx416'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx417'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx418'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx419'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx420'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx421'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx422'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx423'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx424'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx425'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx426'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx427'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx428'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx429'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx430'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx431'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx432'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx433'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx434'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx435'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx436'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx437'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx438'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx439'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx440'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx441'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx442'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx443'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx444'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx445'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx446'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx447'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx448'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx449'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx450'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx451'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx452'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx453'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx454'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx455'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx456'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx457'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx458'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx459'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx460'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx461'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx462'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx463'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx464'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx465'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx466'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx467'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx468'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx469'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx470'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx471'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx472'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx473'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx474'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx475'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx476'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx477'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx478'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx479'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx480'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx481'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx482'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx483'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx484'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx485'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx486'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx487'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx488'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx489'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx490'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx491'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx492'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx493'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx494'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx495'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx496'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx497'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx498'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx499'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
+[INFO] 🏗️ Attempting to add block with transactions: ['Tx500'] from Node2
+[SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
 [SECURITY ALERT] ❌ No valid leaders left! Attempting recovery...
 [SECURITY ALERT] ❌ No possible leaders available. Halting consensus for this round.
 [ERROR] ❌ No valid proposer found. Skipping batch.
