@@ -1,36 +1,37 @@
 [INFO] ✅ Genesis Block Created with Trust Score 1.0.
 
 [SECURITY] Checking for Byzantine behavior...
-[INFO] Malicious Nodes Detected: {'Node3'}
-[INFO] Optimized Node Selection: ['Node2', 'Node4', 'Node1']
-[LEADER ELECTION] ✅ New Leader: Node2 (Trust Score: 0.55)
+[INFO] Malicious Nodes Detected: {'Node4', 'Node3', 'Node1'}
+[SECURITY ALERT] ❌ Too many malicious nodes! Consensus may fail.
+[INFO] Optimized Node Selection: ['Node2']
+[LEADER ELECTION] ✅ New Leader: Node2 (Trust Score: 0.69)
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx1'] from Node2
 [DAG VALIDATION] ✅ Block 1 is valid.
-[BLOCK ADDED] ✅ Block 1 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 1 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx2'] from Node2
 [DAG VALIDATION] ✅ Block 2 is valid.
-[BLOCK ADDED] ✅ Block 2 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 2 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx3'] from Node2
 [DAG VALIDATION] ✅ Block 3 is valid.
-[BLOCK ADDED] ✅ Block 3 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 3 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx4'] from Node2
 [DAG VALIDATION] ✅ Block 4 is valid.
-[BLOCK ADDED] ✅ Block 4 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 4 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx5'] from Node2
 [DAG VALIDATION] ✅ Block 5 is valid.
-[BLOCK ADDED] ✅ Block 5 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 5 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx6'] from Node2
 [DAG VALIDATION] ✅ Block 6 is valid.
-[BLOCK ADDED] ✅ Block 6 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 6 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx7'] from Node2
 [DAG VALIDATION] ✅ Block 7 is valid.
-[BLOCK ADDED] ✅ Block 7 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 7 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx8'] from Node2
 [DAG VALIDATION] ✅ Block 8 is valid.
-[BLOCK ADDED] ✅ Block 8 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 8 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx9'] from Node2
 [DAG VALIDATION] ✅ Block 9 is valid.
-[BLOCK ADDED] ✅ Block 9 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 9 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx10'] from Node2
 [SECURITY] 🔄 Block 10 ALMOST passed, retrying (attempt 1/3)...
 [SECURITY] 🔄 Block 10 ALMOST passed, retrying validation...
@@ -42,13 +43,13 @@
 [SECURITY] 🔄 Block 10 ALMOST passed, retrying validation...
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx13'] from Node2
 [SECURITY] ⚠️ Block 10 FORCED ACCEPTANCE after 3 retries!
-[BLOCK ADDED] ✅ Block 10 by Node2 (Trust Score: 0.55).
+[BLOCK ADDED] ✅ Block 10 by Node2 (Trust Score: 0.69).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx14'] from Node2
-[SECURITY] ❌ Block 11 rejected! Trust weight too low (1.64 < 1.94).
+[SECURITY] ❌ Block 11 rejected! Trust weight too low (2.06 < 2.36).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx15'] from Node2
-[SECURITY] ❌ Block 11 rejected! Trust weight too low (1.64 < 1.94).
+[SECURITY] ❌ Block 11 rejected! Trust weight too low (2.06 < 2.36).
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx16'] from Node2
-[SECURITY] ❌ Block 11 rejected! Trust weight too low (1.64 < 1.94).
+[SECURITY] ❌ Block 11 rejected! Trust weight too low (2.06 < 2.36).
 [SECURITY ALERT] 🚨 Proposer Node2 blacklisted due to repeated failures.
 [INFO] 🏗️ Attempting to add block with transactions: ['Tx17'] from Node2
 [SECURITY] 🚨 Block rejected! Byzantine proposer Node2 detected.
