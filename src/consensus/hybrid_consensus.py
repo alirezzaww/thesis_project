@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import time
 
 class UPBFT:
     def __init__(self, nodes, f, trust_model=None):  # ✅ Allow optional trust_model
@@ -23,22 +24,63 @@ class UPBFT:
         self.nodes = [node for node in self.nodes if node not in self.malicious_nodes]
         print(f"[INFO] Malicious Nodes Detected: {self.malicious_nodes}")
 
-    def elect_leader(self, rounds=3):
-        """Select a leader for a given number of rounds. If leader is malicious, elect a new one."""
-        valid_nodes = [node for node in self.nodes if node not in self.malicious_nodes]
+
+
+    def elect_leader(self, blockchain, rounds=3, top_n=3):
+        """
+        Enhanced leader selection with trust recovery and leader rotation:
+        - Excludes blacklisted nodes but allows recovery.
+        - Uses trust-weighted voting for selection.
+        - Implements leader rotation to prevent starvation.
+        """
+
+        # ✅ Step 1: Apply trust decay for inactive nodes
+        for node in self.nodes:
+            last_activity = self.trust_model.last_activity.get(node, time.time())
+            time_since_last_activity = max(1, time.time() - last_activity)
+            decay_factor = np.exp(-0.005 * time_since_last_activity)  # Slower decay to prevent rapid trust loss
+            self.trust_model.trust_scores[node] *= decay_factor
+
+        # ✅ Step 2: Allow recovery of previously blacklisted nodes if their trust score improves
+        restored_nodes = []
+        for node in self.trust_model.malicious_nodes.copy():
+            if self.trust_model.trust_scores[node] > 0.35:  # **Lower threshold for recovery**
+                print(f"[SECURITY ALERT] 🔄 Restoring proposer {node} after cooldown.")
+                self.trust_model.malicious_nodes.remove(node)
+                restored_nodes.append(node)
+
+        if restored_nodes:
+            return self.elect_leader(blockchain, rounds, top_n)  # Retry election after restoration
+
+        # ✅ Step 3: Exclude blacklisted nodes but allow recovery
+        valid_nodes = sorted(
+            [
+                node for node in self.nodes
+                if node not in self.trust_model.malicious_nodes
+                and self.trust_model.get_trust_score(node) > 0.3
+                and self.trust_model.successful_proposals.get(node, 0) >= (0 if len(blockchain.blocks) < 5 else 2)
+            ],
+            key=lambda x: self.trust_model.get_trust_score(x),
+            reverse=True
+        )
+
         if not valid_nodes:
-            print("[SECURITY ALERT] ❌ No valid leaders left! Consensus halted.")
+            print("[SECURITY ALERT] ❌ No possible leaders available. Halting consensus for this round.")
             return None
 
+        # ✅ Step 4: Keep the current leader if they meet the performance threshold
         if self.leader and self.leader_rounds < rounds:
-            self.leader_rounds += 1
-            return self.leader
+            if self.trust_model.get_trust_score(self.leader) > 0.6:
+                self.leader_rounds += 1
+                return self.leader
 
-        self.leader_rounds = 1
-        self.leader_index = (self.leader_index + 1) % len(valid_nodes)
-        self.leader = valid_nodes[self.leader_index]
+        self.leader_rounds = 1  # Reset leader round count
 
-        print(f"[LEADER ELECTION] ✅ New Leader: {self.leader}")
+        # ✅ Step 5: Select leader from top trusted nodes
+        top_candidates = valid_nodes[:top_n]
+        self.leader = random.choice(top_candidates)
+
+        print(f"[LEADER ELECTION] ✅ New Leader: {self.leader} (Trust Score: {self.trust_model.get_trust_score(self.leader):.2f})")
         return self.leader
 
     def optimize_node_selection(self):
@@ -104,3 +146,5 @@ class UPBFT:
         for node in self.malicious_nodes:
             print(f"[ALERT] 🚨 Detected Byzantine activity from: {node}")
         print("[SECURITY CHECK] ✅ Byzantine analysis completed.")
+
+   

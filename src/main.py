@@ -16,7 +16,7 @@ blockchain = DAGBlockchain(consensus=consensus)
 consensus.detect_malicious_nodes()
 
 # Optimize node selection
-selected_nodes = consensus.trust_model.optimize_node_selection()
+selected_nodes = consensus.optimize_node_selection()
 
 # Example Transactions
 NUM_TRANSACTIONS = 10000
@@ -24,7 +24,7 @@ BATCH_SIZE = 500
 transactions = [f"Tx{i}" for i in range(1, NUM_TRANSACTIONS + 1)]
 
 def process_transaction_batch(batch):
-    proposer_node = consensus.elect_leader(rounds=3)
+    proposer_node = consensus.elect_leader(blockchain, rounds=3)
     if proposer_node is None:
         print("[ERROR] ❌ No valid proposer found. Skipping batch.")
         return
