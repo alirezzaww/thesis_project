@@ -1,19 +1,10 @@
-const hre = require("hardhat");
+require("@nomicfoundation/hardhat-toolbox");
 
-async function main() {
-  // Get the contract factory
-  const TransactionStorage = await hre.ethers.getContractFactory("TransactionStorage");
-
-  // Deploy the contract
-  const transactionStorage = await TransactionStorage.deploy();
-  await transactionStorage.waitForDeployment();  // ✅ Corrected from `deployed()`
-
-  // Get deployed contract address
-  const contractAddress = await transactionStorage.getAddress();
-  console.log(`🚀 Contract deployed to: ${contractAddress}`);
-}
-
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+module.exports = {
+  solidity: "0.8.28",
+  networks: {
+    localhost: {
+      url: "http://127.0.0.1:8545"
+    }
+  }
+};

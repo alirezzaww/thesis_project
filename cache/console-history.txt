@@ -1,3 +1,64 @@
+ethers
+Type ".help" for more information.
+Welcome to Node.js v18.19.1.
+➜  thesis_project git:(modularized-implementation) ✗ npx hardhat console --network localhost
+Run `npm audit` for details.
+a different dependency.
+Some issues need review, and may require choosing
+  npm audit fix
+To address issues that do not require attention, run:
+19 vulnerabilities (14 low, 4 high, 1 critical)
+  run `npm fund` for details
+114 packages are looking for funding
+up to date, audited 644 packages in 2s
+npm WARN EBADENGINE }
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE   required: { node: '20 || >=22' },
+npm WARN EBADENGINE   package: 'path-scurry@2.0.0',
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE }
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE   required: { node: '20 || >=22' },
+npm WARN EBADENGINE   package: 'lru-cache@11.0.2',
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE }
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE   required: { node: '20 || >=22' },
+npm WARN EBADENGINE   package: 'jackspeak@4.1.0',
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE }
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE   required: { node: '20 || >=22' },
+npm WARN EBADENGINE   package: 'minimatch@10.0.1',
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE }
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE   required: { node: '20 || >=22' },
+npm WARN EBADENGINE   package: 'glob@11.0.1',
+npm WARN EBADENGINE Unsupported engine {
+➜  thesis_project git:(modularized-implementation) ✗ npm install --save-dev @nomicfoundation/hardhat-toolbox
+console.log("✅ Contract deployed at:", contract.address);
+await contract.deployed();
+const contract = await factory.deploy();
+const factory = await ethers.getContractFactory("EnhancedConsensus");
+console.log("✅ Contract deployed at:", contract.address);
+await contract.deployed();
+const contract = await factory.deploy();
+const factory = await ethers.getContractFactory("EnhancedConsensus");
+console.log("✅ Contract deployed at:", contract.address);
+await contract.deployed();
+const contract = await factory.deploy();
+const factory = await hre.ethers.getContractFactory("EnhancedConsensus");
+const hre = require("hardhat");
+const ethers = require("ethers");
+console.log("✅ Deployed at:", contract.address);
+await contract.deployed();
+const contract = await factory.deploy();
+const factory = await ethers.getContractFactory("EnhancedConsensus");
+console.log("✅ Deployed at:", contract.address);
+await contract.deployed();
+const contract = await factory.deploy();
+const factory = await ethers.getContractFactory("EnhancedConsensus");
 await contract.getTransaction(1);
 await contract.flagTransaction(1);
 await contract.getTransaction(1);

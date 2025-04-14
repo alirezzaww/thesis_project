@@ -72,6 +72,42 @@
       "artifacts": [
         "TransactionStorage"
       ]
+    },
+    "/root/thesis_project/contracts/EnhancedConsensus.sol": {
+      "lastModificationDate": 1744557339424,
+      "contentHash": "7978ca2dff7355cd3d77c5058b85c32b",
+      "sourceName": "contracts/EnhancedConsensus.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "EnhancedConsensus"
+      ]
     }
   }
 }
