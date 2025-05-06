@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  thesis-app:
+    build: .
+    container_name: thesis_app
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      hardhat-node:
+        condition: service_healthy
+
+
+  hardhat-node:
+    image: trufflesuite/ganache-cli
+    container_name: hardhat_node
+    ports:
+      - "8545:8545"
+    command: ["--networkId", "1337", "--accounts", "10", "--defaultBalanceEther", "1000"]
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:8545', res => process.exit(0)).on('error', () => process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s

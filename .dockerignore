@@ -1,0 +1,15 @@
+venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+.cache/
+node_modules/
+.DS_Store
+.env
+output.txt
+dag_structure*.png
+artifacts/contracts/*/debug.json

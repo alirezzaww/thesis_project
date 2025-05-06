@@ -38,21 +38,28 @@ class UPBFT:
         for node in self.nodes:
             last_activity = self.trust_model.last_activity.get(node, time.time())
             time_since_last_activity = max(1, time.time() - last_activity)
-            decay_factor = np.exp(-0.005 * time_since_last_activity)  # Slower decay to prevent rapid trust loss
+            decay_factor = np.exp(-0.005 * time_since_last_activity)
             self.trust_model.trust_scores[node] *= decay_factor
 
-        # ✅ Step 2: Allow recovery of previously blacklisted nodes if their trust score improves
+        # ✅ Step 2: Allow recovery of blacklisted nodes
         restored_nodes = []
         for node in self.trust_model.malicious_nodes.copy():
-            if self.trust_model.trust_scores[node] > 0.35:  # **Lower threshold for recovery**
+            if self.trust_model.trust_scores[node] > 0.35:
                 print(f"[SECURITY ALERT] 🔄 Restoring proposer {node} after cooldown.")
                 self.trust_model.malicious_nodes.remove(node)
                 restored_nodes.append(node)
 
         if restored_nodes:
-            return self.elect_leader(blockchain, rounds, top_n)  # Retry election after restoration
+            return self.elect_leader(blockchain, rounds, top_n)
 
-        # ✅ Step 3: Exclude blacklisted nodes but allow recovery
+        # ✅ DEBUG PRINTS HERE
+        print("\n[DEBUG] 🔍 Starting Leader Election")
+        print("[DEBUG] Trust Scores:", self.trust_model.trust_scores)
+        print("[DEBUG] Malicious Nodes:", self.trust_model.malicious_nodes)
+        print("[DEBUG] Successful Proposals:", self.trust_model.successful_proposals)
+        print("[DEBUG] Blockchain Length:", len(blockchain.blocks))
+
+        # ✅ Step 3: Filter valid nodes
         valid_nodes = sorted(
             [
                 node for node in self.nodes
@@ -64,19 +71,22 @@ class UPBFT:
             reverse=True
         )
 
+        print("[DEBUG] Valid Candidates:", valid_nodes)
+
         if not valid_nodes:
             print("[SECURITY ALERT] ❌ No possible leaders available. Halting consensus for this round.")
             return None
 
-        # ✅ Step 4: Keep the current leader if they meet the performance threshold
+        # ✅ Step 4: Maintain current leader if still qualified
         if self.leader and self.leader_rounds < rounds:
             if self.trust_model.get_trust_score(self.leader) > 0.6:
                 self.leader_rounds += 1
+                print(f"[DEBUG] 🔁 Keeping Current Leader: {self.leader}")
                 return self.leader
 
-        self.leader_rounds = 1  # Reset leader round count
+        self.leader_rounds = 1
 
-        # ✅ Step 5: Select leader from top trusted nodes
+        # ✅ Step 5: Elect new leader
         top_candidates = valid_nodes[:top_n]
         self.leader = random.choice(top_candidates)
 

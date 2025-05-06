@@ -1,62 +1,119 @@
-# Thesis Project Summary
+# 🚀 Thesis Project: Revolutionizing Blockchain Consensus
 
 **Title:** *Revolutionizing Blockchain Consensus: Scalable, Energy-Efficient, and Fault-Tolerant Algorithms for Next-Generation Distributed Systems*
 
----
+## 📚 Summary
 
-## 🔧 1. Overall Architecture
+This project implements a full-stack prototype of a **hybrid blockchain consensus system** optimized for UAV swarms, DeFi, and energy-aware distributed networks. It combines **DAG-based parallelism**, **U-PBFT fault tolerance**, and **AI-based fraud detection** into a coherent and extensible architecture.
 
-You’ve designed and implemented a full-stack prototype of a novel **hybrid blockchain consensus system** that combines:
-
-| Layer        | Description                                                                 |
-|--------------|-----------------------------------------------------------------------------|
-| **Smart Contract** | A Solidity-based contract (`EnhancedConsensus.sol`) that includes DAG-like structure, validator voting (U-PBFT-style), energy scoring, and leader rotation. |
-| **Backend**        | A Python Flask API (`api.py`) that connects the smart contract, machine learning model, and simulation interface. |
-| **Consensus Logic**| A simulated DAG + U-PBFT consensus mechanism with selective node participation and trust modeling. |
-| **Deployment Tool**| A Hardhat-based local blockchain used for smart contract compilation, testing, and deployment. |
+This implementation is based on the user’s thesis work and Q1/Q2 journal research in areas such as:
+- Hybrid consensus (DAG + PBFT / U-PBFT)
+- Trust management and energy scoring
+- Fraud detection using machine learning
+- Lightweight blockchain for constrained nodes
 
 ---
 
-## 🧠 2. Key Features Implemented
+## 🏗️ Architecture Overview
 
-| Feature                      | Description                                                                 |
-|------------------------------|-----------------------------------------------------------------------------|
-| 🧱 **DAG-based TX Structure**   | Each transaction stores references to parent TXs, forming a DAG-like flow. |
-| ⚖ **U-PBFT Voting**           | Transactions require validator approvals (`MIN_APPROVALS`) before commitment. |
-| 🔋 **Energy Efficiency**       | Each node is assigned an `energyScore`; low-energy nodes can be excluded.  |
-| 🔍 **Reputation Tracking**     | `getReputation()` combines energy and fraud count to assess validator trust. |
-| 🔁 **Leader Rotation**         | `rotateLeader()` simulates VRF-based election via `block.prevrandao`.       |
-| 📈 **Testing**                | A `load_test.py` script sends batch TXs, simulates fraud, and tracks performance. |
-| 🤖 **AI Fraud Detection**     | A trained `fraud_detection_model.pkl` is used to detect and flag malicious behavior. |
+| Layer               | Component                                          | Description |
+|---------------------|----------------------------------------------------|-------------|
+| 💡 **Smart Contract** | `EnhancedConsensus.sol`                           | Solidity contract handling DAG txs, voting, energy scoring, and leader rotation |
+| 🔧 **Backend API**     | `src/api.py` (Flask app)                          | Provides endpoints for TX submission, DAG visualization, fraud detection |
+| 🧠 **Consensus Logic**| `src/consensus/hybrid_consensus.py`               | Simulated DAG + U-PBFT consensus with trust/energy-based node selection |
+| ⚙️ **Simulation**      | `src/simulation/load_test.py`                     | Stress testing, fraud simulation, transaction batching |
+| 🧪 **Fraud Detection** | `src/ai/fraud_detector.py`, `fraud_detection_model.pkl` | AI model trained on TX patterns to classify fraudulence |
 
 ---
 
-## 🧪 3. Simulation & Deployment Environment
+## ⚙️ How to Run (Dockerized Setup)
 
-| Tool | Purpose |
-|------|---------|
-| **Hardhat** | Simulates a blockchain node locally (`localhost:8545`) |
-| **Flask API** | Exposes routes for submitting, approving, and analyzing transactions |
-| **Python Scripts** | Used for automated testing and DAG simulations |
-| **Smart Contract Deployment** | Managed via `scripts/deploy.js` using Hardhat |
+1. Clone the repo:
+```bash
+git clone https://github.com/YOUR_USERNAME/thesis_project.git
+cd thesis_project
+```
+
+2. Build & start using Docker:
+```bash
+docker compose up --build
+```
+
+3. Access the backend:
+```bash
+curl http://127.0.0.1:5000
+```
+
+4. Available endpoints:
+- `POST /predict` — classify TX using AI and add to DAG
+- `GET /get_blocks` — get DAG block list
+- `POST /add_tx` — manually add TX (simulated)
+- `GET /health` — system status
 
 ---
 
-## 🧠 4. Research Integration
+## 🔬 Research Contributions
 
-The implementation directly reflects the concepts proposed in your thesis:
-- **Scalability**: DAG structure enables parallel transaction validation.
-- **Energy Efficiency**: AI and node profiling reduce unnecessary computation.
-- **Fault Tolerance**: PBFT-style voting + ML detection prevents double spending or Sybil attacks.
-- **Real-World Use**: Designed for UAV swarms, DeFi, and energy-aware distributed systems.
+Based on journal papers and thesis goals:
+- **Hybrid Consensus**: U-PBFT layered on DAG to balance scalability and fault tolerance.
+- **Energy-Aware Participation**: Node roles weighted by reputation and energy score.
+- **Secure Routing for UAVs**: Inspired by BC-UTSON, BMWSL, and TPDR trust models.
+- **AI in Blockchain**: Real-time fraud prediction enhances transaction integrity.
+- **Scalability**: DAG allows parallel validation, reduces bottlenecks.
 
 ---
 
-## 🔜 5. Next Steps
+## 🧪 Benchmark & Simulation Tools
 
-| Task | Status |
-|------|--------|
-| Fix `ethers` injection for deployment | 🔄 In progress |
-| Update `api.py` with new endpoints | ⏳ Next step |
-| Run full DAG + U-PBFT simulation and benchmark | 🔜 After deploy |
-| Document evaluation metrics for thesis | 🔜 Before final report |
+- `src/simulation/load_test.py`: simulate heavy TX load, inject fraud
+- `fraud_detection_model.pkl`: trained with scikit-learn, used for TX classification
+- `scripts/deploy.js`: deploy smart contract on Hardhat (localhost:8545)
+
+---
+
+## 🗺️ Project Structure
+
+```
+thesis_project/
+│
+├── src/
+│   ├── api.py                     # Main Flask API
+│   ├── ai/                        # ML model + fraud detection logic
+│   ├── consensus/                 # DAG + U-PBFT implementation
+│   ├── simulation/                # Benchmark tools
+│   └── utils/                     # Helper functions
+│
+├── contracts/                     # Solidity contracts
+├── scripts/                       # Hardhat deployment scripts
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+└── README.md
+```
+
+---
+
+## 📈 Evaluation Metrics (Planned)
+
+| Metric              | Description |
+|---------------------|-------------|
+| TX Throughput       | Measure of processed transactions/sec |
+| Energy Efficiency   | CPU time per TX; participation reduction rate |
+| Consensus Latency   | Time to commit a TX |
+| Fraud Detection Rate| Precision/recall of ML classification |
+| Fault Tolerance     | Recovery rate under node failure/sybil attack |
+
+---
+
+## 🧭 Future Work
+
+- Integrate smart contract deployment from API
+- Visualize DAG and validator status in frontend
+- Extend ML to detect sybil & selfish mining patterns
+- Evaluate on Raspberry Pi swarm
+
+---
+
+## 📣 Contact
+
+For academic collaboration or feedback, contact **Alireza [alirezaerfanianmohrsaz@yahooo.com]**

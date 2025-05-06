@@ -1,6 +1,5 @@
 import json
 import sys
-import time
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
@@ -15,38 +14,26 @@ from src.consensus.trust_model import TrustModel
 
 app = Flask(__name__)
 
-# Load AI fraud detection model
+# Load fraud detection model
 model = joblib.load("fraud_detection_model.pkl")
 
-# Initialize Blockchain Consensus Layer
+# Initialize blockchain consensus simulation
 trust_model = TrustModel(nodes=["Node1", "Node2", "Node3", "Node4"])
 consensus = UPBFT(nodes=["Node1", "Node2", "Node3", "Node4"], f=1, trust_model=trust_model)
 blockchain = DAGBlockchain(consensus=consensus)
 
-# Connect to Local Hardhat Blockchain
+# Connect to local blockchain
 web3 = Web3(Web3.HTTPProvider("http://hardhat-node:8545"))
-
-# Load Smart Contract
+web3.eth.default_account = web3.eth.accounts[0]  # Use the first account
 contract_address = Web3.to_checksum_address("0x5fbdb2315678afecb367f032d93f642f64180aa3")
+  # Replace with deployed address
+
+# Load ABI from compiled contract JSON
 with open("artifacts/contracts/EnhancedConsensus.sol/EnhancedConsensus.json", "r") as f:
     contract_json = json.load(f)
     contract_abi = contract_json["abi"]
+
 contract = web3.eth.contract(address=contract_address, abi=contract_abi)
-
-# Initialize web3 connection early
-for attempt in range(10):
-    try:
-        accounts = web3.eth.accounts
-        web3.eth.default_account = accounts[0]
-        print(f"[INFO] ✅ Connected to Hardhat. Using account {accounts[0]}")
-        break
-    except Exception as e:
-        print(f"[WAITING] ⏳ Waiting for Hardhat node... Attempt {attempt + 1}/10")
-        time.sleep(2)
-else:
-    raise ConnectionError("❌ Failed to connect to Hardhat node after 10 attempts.")
-
-# ---------------------- ROUTES ----------------------
 
 @app.route('/predict', methods=['POST'])
 def predict_fraud():
@@ -65,18 +52,14 @@ def predict_fraud():
         web3.eth.wait_for_transaction_receipt(tx_hash)
         return jsonify({"message": "🚨 Fraud detected!", "transaction_id": data['transaction_id']})
     else:
-        proposer = consensus.elect_leader(blockchain)
-        if proposer is None:
-            return jsonify({
-                "error": "❌ No eligible proposer found. Try again later or verify trust scores."
-            }), 500
-
+        proposer = consensus.elect_leader(blockchain)  # ✅ FIXED LINE
         blockchain.add_block([data['transaction_id']], proposer)
         return jsonify({
-            "message": "✅ Transaction is safe & added to DAG.",
+            "message": "✅ Transaction is safe & added to blockchain.",
             "transaction_id": data['transaction_id'],
             "proposer": proposer
         })
+
 
 @app.route('/add_tx', methods=['POST'])
 def add_transaction():
@@ -95,6 +78,11 @@ def approve_transaction():
     tx_hash = contract.functions.approveTransaction(data['transaction_id']).transact()
     receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
     return jsonify({"message": "Transaction approved.", "tx_hash": receipt.transactionHash.hex()})
+
+@app.route('/get_reputation/<address>', methods=['GET'])
+def get_reputation(address):
+    rep = contract.functions.getReputation(address).call()
+    return jsonify({"reputation": rep})
 
 @app.route('/update_energy', methods=['POST'])
 def update_energy():
@@ -129,12 +117,5 @@ def validate_dag():
     is_valid = blockchain.validate_dag()
     return jsonify({"dag_valid": is_valid})
 
-# ---------------------- RUN ----------------------
-
-# Root endpoint to show API is running
-@app.route('/')
-def index():
-    return jsonify({"message": "🚀 Thesis API is up and running!"})
-
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000, use_reloader=False)
+    app.run(debug=True)

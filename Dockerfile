@@ -1,20 +1,26 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim
+FROM python:3.12-slim
 
-# Set the working directory in the container
 WORKDIR /app
+ENV PYTHONPATH=/app
 
-# Copy the requirements file into the container
-COPY . /app/
+# Install required system libraries
+RUN apt-get update && apt-get install -y \
+    curl \
+    gcc \
+    g++ \
+    build-essential \
+    libdbus-1-dev \
+    libglib2.0-dev \
+    libcairo2-dev \
+    libsystemd-dev \
+    libgirepository1.0-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set the Python path to recognize `src/`
-ENV PYTHONPATH="${PYTHONPATH}:/app/src"
 
-# Install dependencies
-RUN pip install --no-cache-dir -r /app/requirements.txt
+COPY . .
 
-# Expose the port the app runs on
+RUN pip install --no-cache-dir -r requirements.txt
+
 EXPOSE 5000
-
-# Command to run the Flask app
-CMD ["python", "/app/src/flask_app.py"]
+CMD ["python", "-m", "src.api"]

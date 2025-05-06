@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thesis-app
+  labels:
+    app: thesis-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: thesis-app
+  template:
+    metadata:
+      labels:
+        app: thesis-app
+    spec:
+      containers:
+      - name: thesis-app
+        image: thesis-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
