@@ -66,3 +66,6 @@ web3==6.10.0
 wheel==0.42.0
 zope.interface==6.1
 attrs==23.2.0
+
+networkx==3.3
+rsa==4.9

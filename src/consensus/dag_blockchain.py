@@ -60,17 +60,23 @@ class DAGBlockchain:
         if len(self.blocks) < 2:
             return [self.blocks[-1].hash]
 
-        parent_candidates = self.blocks[-5:]
-        avg_trust_score = sum(b.trust_score for b in parent_candidates) / max(1, len(parent_candidates))
-        sorted_parents = sorted(
-            [b for b in parent_candidates if b.trust_score > avg_trust_score * 0.5],
-            key=lambda b: b.trust_score,
+        parent_candidates = self.blocks[-10:]  # Analyze the last 10 blocks
+        now = time.time()
+
+        def score_block(b):
+            time_decay = max(0.1, 1.0 / (1.0 + (now - b.timestamp)))
+            tx_volume = len(b.transactions)
+            trust_score = b.trust_score
+            return trust_score * time_decay * (tx_volume + 1)
+
+        scored_parents = sorted(
+            parent_candidates,
+            key=score_block,
             reverse=True
         )
-        if len(sorted_parents) < 2:
-            print("[WARNING] ⚠️ Not enough high-trust parent blocks, using most recent ones.")
-            sorted_parents = parent_candidates[-3:]
-        return [block.hash for block in sorted_parents[:3]]
+
+        top_k = 3  # number of parents to attach
+        return [block.hash for block in scored_parents[:top_k]]
 
     def add_block(self, transactions, proposer_node):
         print(f"[INFO] 🏗️ Attempting to add block with transactions: {transactions} from {proposer_node}")
@@ -101,6 +107,11 @@ class DAGBlockchain:
             if self.consensus.trust_model.misbehavior_count[proposer_node] >= 3:
                 print(f"[SECURITY ALERT] 🚨 Proposer {proposer_node} blacklisted due to repeated failures.")
                 self.consensus.malicious_nodes.add(proposer_node)
+            # ✅ Attempt trust recovery for proposer if recently blacklisted
+            if proposer_node in self.consensus.malicious_nodes:
+                if self.consensus.trust_model.trust_scores[proposer_node] > 0.35:
+                    print(f"[RECOVERY] ✅ Node {proposer_node} restored from malicious list.")
+                    self.consensus.malicious_nodes.remove(proposer_node)
             return None
 
         self.blocks.append(new_block)
@@ -219,3 +230,17 @@ class DAGBlockchain:
                         return "RETRY"
                     return True
         return False
+
+    def get_performance_metrics(self):
+        """Proxy to retrieve performance metrics from the consensus layer."""
+        total_time = max(self.consensus.performance_metrics["total_time"], 0.0001)
+        total_tx = self.consensus.performance_metrics["total_transactions"]
+        tps = total_tx / total_time
+        avg_latency = total_time / max(1, total_tx)
+
+        return {
+            "Total Transactions": total_tx,
+            "Total Time (s)": round(total_time, 4),
+            "TPS (Transactions Per Second)": round(tps, 4),
+            "Average Latency (s)": round(avg_latency, 6)
+        }

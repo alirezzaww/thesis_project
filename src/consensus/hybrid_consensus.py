@@ -52,6 +52,11 @@ class UPBFT:
         if restored_nodes:
             return self.elect_leader(blockchain, rounds, top_n)
 
+        # ✅ Floor trust scores to avoid float underflow
+        for node in self.nodes:
+            if self.trust_model.trust_scores[node] < 0.25:
+                self.trust_model.trust_scores[node] = 0.25
+
         # ✅ DEBUG PRINTS HERE
         print("\n[DEBUG] 🔍 Starting Leader Election")
         print("[DEBUG] Trust Scores:", self.trust_model.trust_scores)
@@ -75,6 +80,16 @@ class UPBFT:
 
         if not valid_nodes:
             print("[SECURITY ALERT] ❌ No possible leaders available. Halting consensus for this round.")
+            # ✅ Step 3.5: Try fallback leader if TPS is too low
+            metrics = blockchain.get_performance_metrics()
+            if metrics["TPS (Transactions Per Second)"] < 10 and self.leader in self.nodes:
+                print(f"[PERFORMANCE ALERT] 🔁 TPS below threshold. Re-electing leader to improve throughput.")
+                valid_candidates = [n for n in self.nodes if n != self.leader and n not in self.trust_model.malicious_nodes]
+                if valid_candidates:
+                    self.leader = random.choice(valid_candidates)
+                    self.leader_rounds = 1
+                    print(f"[RE-ELECTION] 🆕 Leader after TPS drop: {self.leader}")
+                    return self.leader
             return None
 
         # ✅ Step 4: Maintain current leader if still qualified
@@ -86,22 +101,40 @@ class UPBFT:
 
         self.leader_rounds = 1
 
-        # ✅ Step 5: Elect new leader
-        top_candidates = valid_nodes[:top_n]
+        # ✅ Step 5: Elect new leader using composite scoring
+        def compute_node_score(node):
+            energy = getattr(self.trust_model, "energy", {}).get(node, 1.0)
+            success_rate = self.trust_model.successful_proposals.get(node, 0) / max(1, len(self.trust_model.successful_proposals))
+            fraud_rate = self.trust_model.misbehavior_count.get(node, 0) / 10  # Normalize
+            return self.trust_model.get_composite_score(node, energy, success_rate, fraud_rate)
+
+        scored_candidates = sorted(valid_nodes, key=compute_node_score, reverse=True)
+        top_candidates = scored_candidates[:top_n]
         self.leader = random.choice(top_candidates)
 
         print(f"[LEADER ELECTION] ✅ New Leader: {self.leader} (Trust Score: {self.trust_model.get_trust_score(self.leader):.2f})")
         return self.leader
 
     def optimize_node_selection(self):
-        """Prioritize non-Byzantine nodes for consensus decision-making."""
-        sorted_nodes = sorted(self.node_scores.items(), key=lambda x: x[1], reverse=True)
-        selected_nodes = [node for node, score in sorted_nodes if node not in self.malicious_nodes]
+        """Select nodes based on AI-composite trust scoring model."""
+        def compute_node_score(node):
+            energy = getattr(self.trust_model, "energy", {}).get(node, 1.0)
+            success_rate = self.trust_model.successful_proposals.get(node, 0) / max(1, len(self.trust_model.successful_proposals))
+            fraud_rate = self.trust_model.misbehavior_count.get(node, 0) / 10  # Normalize
+            return self.trust_model.get_composite_score(node, energy, success_rate, fraud_rate)
+
+        scored_nodes = sorted(
+            [node for node in self.nodes if node not in self.malicious_nodes],
+            key=compute_node_score,
+            reverse=True
+        )
+
+        selected_nodes = scored_nodes[:max(1, self.f + 1)]
 
         if len(selected_nodes) < self.f + 1:
-            print("[SECURITY ALERT] ❌ Too many malicious nodes! Consensus may fail.")
+            print("[SECURITY ALERT] ❌ Too few honest nodes! Consensus may be unstable.")
         
-        print(f"[INFO] Optimized Node Selection: {selected_nodes}")
+        print(f"[INFO] Selected Nodes Based on Composite Scoring: {selected_nodes}")
         return selected_nodes
 
     def pre_prepare(self, transaction):

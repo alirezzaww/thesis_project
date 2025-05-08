@@ -34,7 +34,7 @@ class TrustModel:
             trust_gain += 0.05
 
         new_trust = (0.8 * previous_trust) + (0.2 * (previous_trust + trust_gain))
-        self.trust_scores[node] = max(0.1, min(1.0, new_trust))
+        self.trust_scores[node] = max(0.25, min(1.0, new_trust))  # Raise trust floor from 0.1 to 0.25
         self.last_activity[node] = current_time
 
     def recover_trust(self, node):
@@ -42,13 +42,24 @@ class TrustModel:
         if node in self.malicious_nodes:
             print(f"[RECOVERY] ⏳ Node {node} is under cooldown. Gradually restoring trust.")
             self.trust_scores[node] += 0.05  # Small trust recovery over time
-            if self.trust_scores[node] > 0.4:  # Restore when trust is high enough
+            if self.trust_scores[node] > 0.35:  # Restore when trust is high enough
                 print(f"[RECOVERY] ✅ Node {node} has recovered and is removed from blacklist.")
                 self.malicious_nodes.remove(node)
 
     def get_trust_score(self, node):
         """Retrieve the trust score of a node."""
         return self.trust_scores.get(node, 0.5)  # Default to neutral trust
+
+    def get_composite_score(self, node, energy=1.0, tx_success_rate=1.0, fraud_rate=0.0):
+        """
+        Compute an AI-inspired composite score for node selection:
+        score = α * trust + β * energy + γ * success_rate − δ * fraud_penalty
+        """
+        α, β, γ, δ = 0.4, 0.3, 0.2, 0.1  # Tunable weights
+
+        trust = self.get_trust_score(node)
+        score = (α * trust) + (β * energy) + (γ * tx_success_rate) - (δ * fraud_rate)
+        return round(score, 4)
 
     def get_malicious_nodes(self):
         """Detect and penalize nodes with very low trust scores, but allow recovery."""
@@ -58,7 +69,7 @@ class TrustModel:
             if score < 0.3:
                 self.misbehavior_count[node] += 1  
                 penalty_factor = 1.1 ** self.misbehavior_count[node]  # Slower exponential penalty
-                self.trust_scores[node] = max(0.1, score / penalty_factor)  # Apply penalty
+                self.trust_scores[node] = max(0.25, score / penalty_factor)  # Raise floor to 0.25
 
                 if self.misbehavior_count[node] > 5:  # ✅ Allow recovery after multiple failures
                     print(f"[SECURITY ALERT] 🔄 Node {node} has served penalty time. Removing from blacklist.")

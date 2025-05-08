@@ -129,6 +129,22 @@ def validate_dag():
     is_valid = blockchain.validate_dag()
     return jsonify({"dag_valid": is_valid})
 
+@app.route('/trust_scores', methods=['GET'])
+def get_trust_scores():
+    return jsonify({"trust_scores": trust_model.trust_scores})
+
+@app.route('/malicious_nodes', methods=['GET'])
+def get_malicious_nodes():
+    return jsonify({"malicious_nodes": list(consensus.malicious_nodes)})
+
+@app.route('/simulate_attack', methods=['POST'])
+def simulate_attack():
+    data = request.json
+    attacker = data.get("attacker", "Node1")
+    fake_tx = f"FakeTx-{attacker}"
+    blockchain.add_block([fake_tx], attacker)
+    return jsonify({"message": "⚠️ Simulated malicious transaction submitted.", "attacker": attacker})
+
 # ---------------------- RUN ----------------------
 
 # Root endpoint to show API is running
