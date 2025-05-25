@@ -5,14 +5,16 @@ import numpy as np
 
 # Connect to Hardhat blockchain
 web3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
+# Use the first Hardhat account as the default sender
+web3.eth.default_account = web3.eth.accounts[0]
 
 # Load ABI from compiled contract JSON
 with open("artifacts/contracts/TransactionStorage.sol/TransactionStorage.json", "r") as f:
     contract_json = json.load(f)
     contract_abi = contract_json["abi"]  # ✅ Correct way to load ABI
 
-# Smart contract details
-contract_address = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"  # Replace with actual deployed address
+ # Smart contract details
+contract_address = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 
 contract = web3.eth.contract(address=contract_address, abi=contract_abi)
 

@@ -1,0 +1,15 @@
+{
+  "TPS": 0.0,
+  "Success Rate (%)": 0.0,
+  "Execution Time (s)": 36.08,
+  "Consensus Metrics": {
+    "total_transactions": 0,
+    "total_time": 1e-05
+  },
+  "DAG Metrics": {
+    "Total Transactions": 0,
+    "Total Time (s)": 0.0001,
+    "TPS (Transactions Per Second)": 0.0,
+    "Average Latency (s)": 0.0001
+  }
+}

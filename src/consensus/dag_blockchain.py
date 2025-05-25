@@ -1,8 +1,15 @@
 from collections import defaultdict
 import hashlib
 import time
-import networkx as nx
-import matplotlib.pyplot as plt
+try:
+    import networkx as nx
+except ImportError:
+    nx = None
+# Matplotlib is only needed for visualization
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    plt = None
 import rsa
 
 # Generate RSA keys for signing
@@ -37,6 +44,12 @@ class Block:
         except rsa.VerificationError:
             return False
 
+class FinalizedBlock(Block):
+    """Represents a block that has reached consensus finality."""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.finalized = True
+
 class DAGBlockchain:
     def __init__(self, consensus):
         self.consensus = consensus
@@ -60,14 +73,22 @@ class DAGBlockchain:
         if len(self.blocks) < 2:
             return [self.blocks[-1].hash]
 
-        parent_candidates = self.blocks[-10:]  # Analyze the last 10 blocks
+        parent_candidates = [b for b in self.blocks[-10:]
+                             if self.consensus.trust_model.get_reputation_tier(b.proposer) in ("High", "Medium")]
         now = time.time()
 
         def score_block(b):
             time_decay = max(0.1, 1.0 / (1.0 + (now - b.timestamp)))
             tx_volume = len(b.transactions)
             trust_score = b.trust_score
-            return trust_score * time_decay * (tx_volume + 1)
+            # Compute average fraud probability of this block’s transactions
+            fraud_probs = []
+            for tx in b.transactions:
+                features = self.consensus.trust_model.prepare_features(tx)
+                fraud_probs.append(self.consensus.trust_model.score_transaction(features))
+            avg_fraud_prob = sum(fraud_probs) / len(fraud_probs) if fraud_probs else 0.0
+            # Composite score adjusted by fraud penalty
+            return trust_score * time_decay * (tx_volume + 1) * (1 - avg_fraud_prob)
 
         scored_parents = sorted(
             parent_candidates,
@@ -89,13 +110,33 @@ class DAGBlockchain:
             print(f"[SECURITY] 🚨 Block rejected! Byzantine proposer {proposer_node} detected.")
             return None
 
+        # 🛠 Run U-PBFT consensus for each transaction
+        for tx in transactions:
+            try:
+                consensus_reply = self.consensus.run_consensus(tx, self)
+                print(f"[CONSENSUS] U-PBFT reply: {consensus_reply}")
+            except Exception as e:
+                print(f"[CONSENSUS ERROR] {e}. Block creation aborted.")
+                return None
+
         parent_hashes = self.get_parent_blocks()
         if not parent_hashes:
-            print("[ERROR] ❌ Block rejected! No valid parent blocks found.")
-            return None
+            print("[WARNING] ⚠️ No valid parents found. Fallback to last block.")
+            parent_hashes = [self.blocks[-1].hash]
 
         trust_score = self.consensus.trust_model.trust_scores.get(proposer_node, 0.5)
         new_block = Block(len(self.blocks), parent_hashes, transactions, proposer_node, trust_score)
+
+        # Finalize if proposer is highly trusted and total parents are finalized
+        if self.consensus.trust_model.get_reputation_tier(proposer_node) == "High":
+            all_finalized = all(
+                isinstance(b, FinalizedBlock) or hasattr(b, "finalized") and b.finalized
+                for b in self.blocks if b.hash in parent_hashes
+            )
+            if all_finalized:
+                print(f"[FINALITY] 🔐 Block {new_block.index} finalized.")
+                new_block.finalized = True
+
         validation_result = self.validate_block(new_block)
 
         if validation_result == "RETRY":
@@ -150,6 +191,11 @@ class DAGBlockchain:
         parent_weight = sum(b.trust_score for b in self.blocks if b.hash in block.previous_hashes)
 
         if parent_weight < adjusted_threshold:
+            # Minor trust penalty if High trust node fails to finalize
+            if self.consensus.trust_model.get_reputation_tier(block.proposer) == "High":
+                self.consensus.trust_model.trust_scores[block.proposer] *= 0.95
+                print(f"[TRUST DECAY] 📉 High-tier proposer {block.proposer} slightly penalized for missed finality.")
+
             if parent_weight >= retry_threshold:
                 if retry_attempts < 3:
                     self.retry_counts[block.index] += 1
@@ -170,6 +216,8 @@ class DAGBlockchain:
                             if trust_model.trust_scores[block.proposer] < 0.2:
                                 print(f"[SECURITY ALERT] 🚨 Proposer {block.proposer} blacklisted due to critically low trust score.")
                                 trust_model.malicious_nodes.add(block.proposer)
+                            if trust_model.trust_scores[block.proposer] < 0.3:
+                                print(f"[SECURITY NOTICE] ⚠️ Node {block.proposer} nearing blacklisting (Trust Score: {trust_model.trust_scores[block.proposer]:.2f})")
                         return False
             else:
                 print(f"[SECURITY] ❌ Block {block.index} rejected! Trust weight too low ({parent_weight:.2f} < {adjusted_threshold:.2f}).")
@@ -192,6 +240,10 @@ class DAGBlockchain:
         return True
 
     def visualize_dag(self, malicious_nodes=None, num_blocks=50):
+        if nx is None or plt is None:
+            print("[VISUALIZE] ⚠️ Visualization dependencies missing; skipping DAG visualization.")
+            return
+
         print("\n[DAG Blockchain Structure Visualization]")
         subset_blocks = self.blocks[-num_blocks:] if len(self.blocks) > num_blocks else self.blocks
         subset_hashes = {blk.hash for blk in subset_blocks}
@@ -244,3 +296,7 @@ class DAGBlockchain:
             "TPS (Transactions Per Second)": round(tps, 4),
             "Average Latency (s)": round(avg_latency, 6)
         }
+
+    def get_finalized_blocks(self):
+        """Return all blocks that have reached finality."""
+        return [b for b in self.blocks if hasattr(b, "finalized") and b.finalized]

@@ -11,10 +11,12 @@ async function main() {
   const ContractFactory = await hre.ethers.getContractFactory("EnhancedConsensus");
   const contract = await ContractFactory.deploy();
 
-  // ⬇️ Instead of contract.deployed(), use this:
-  await contract.deployTransaction.wait();
+  // Wait for the contract deployment to finish
+  await contract.waitForDeployment();
 
-  console.log("✅ EnhancedConsensus deployed at:", contract.address);
+  // Support both Ethers v5 (address) and v6 (target/getAddress)
+  const deployedAddress = contract.address || contract.target || (await contract.getAddress());
+  console.log("✅ EnhancedConsensus deployed at:", deployedAddress);
 }
 
 main().catch((error) => {

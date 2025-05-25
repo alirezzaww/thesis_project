@@ -13,6 +13,7 @@ class UPBFT:
         self.performance_metrics = {"total_transactions": 0, "total_time": 0.00001}
         self.leader_rounds = 0
         self.leader = None
+        self.skipped_count = {node: 0 for node in self.nodes}
 
     def detect_malicious_nodes(self):
         """Detect Byzantine nodes using reputation scores."""
@@ -79,6 +80,25 @@ class UPBFT:
         print("[DEBUG] Valid Candidates:", valid_nodes)
 
         if not valid_nodes:
+            print("[SECURITY ALERT] ❌ No possible leaders available. Trying fallback with relaxed threshold...")
+
+            # Fallback attempt with lower threshold (e.g. 0.2)
+            fallback_candidates = sorted(
+                [
+                    node for node in self.nodes
+                    if node not in self.trust_model.malicious_nodes
+                    and self.trust_model.get_trust_score(node) > 0.2
+                ],
+                key=lambda x: self.trust_model.get_trust_score(x),
+                reverse=True
+            )
+
+            if fallback_candidates:
+                self.leader = fallback_candidates[0]
+                print(f"[FALLBACK] 🛠️ Elected fallback leader: {self.leader} (Trust Score: {self.trust_model.get_trust_score(self.leader):.2f})")
+                return self.leader
+
+            # Proceed with performance-based fallback if needed
             print("[SECURITY ALERT] ❌ No possible leaders available. Halting consensus for this round.")
             # ✅ Step 3.5: Try fallback leader if TPS is too low
             metrics = blockchain.get_performance_metrics()
@@ -110,8 +130,17 @@ class UPBFT:
 
         scored_candidates = sorted(valid_nodes, key=compute_node_score, reverse=True)
         top_candidates = scored_candidates[:top_n]
-        self.leader = random.choice(top_candidates)
 
+        # Prioritize nodes with fewer skips for fairness
+        top_candidates = sorted(top_candidates, key=lambda x: self.skipped_count.get(x, 0))
+
+        self.leader = top_candidates[0]
+        self.skipped_count[self.leader] = 0
+        for node in self.nodes:
+            if node != self.leader:
+                self.skipped_count[node] += 1
+
+        print("[DEBUG] Skipped Counts:", self.skipped_count)
         print(f"[LEADER ELECTION] ✅ New Leader: {self.leader} (Trust Score: {self.trust_model.get_trust_score(self.leader):.2f})")
         return self.leader
 
@@ -130,9 +159,12 @@ class UPBFT:
         )
 
         selected_nodes = scored_nodes[:max(1, self.f + 1)]
-
-        if len(selected_nodes) < self.f + 1:
-            print("[SECURITY ALERT] ❌ Too few honest nodes! Consensus may be unstable.")
+        # Ensure minimum committee size of f+1
+        min_committee = self.f + 1
+        if len(selected_nodes) < min_committee:
+            # Fallback to all non-malicious nodes
+            selected_nodes = [n for n in self.nodes if n not in self.malicious_nodes]
+            print(f"[CONSENSUS] Fallback: using all non-malicious nodes for committee: {selected_nodes}")
         
         print(f"[INFO] Selected Nodes Based on Composite Scoring: {selected_nodes}")
         return selected_nodes
@@ -149,6 +181,34 @@ class UPBFT:
         """Simulate the commit step in PBFT."""
         self.performance_metrics["total_transactions"] += 1
         return True
+
+    def reply(self, committed_msg):
+        """Simulate the reply step in U-PBFT."""
+        return f"Replied({committed_msg})"
+
+    def run_consensus(self, transaction, blockchain):
+        """Orchestrate a full U-PBFT consensus round for a transaction."""
+        # Detect and remove Byzantine nodes before consensus
+        self.detect_malicious_nodes()
+        # Elect a leader
+        leader = self.elect_leader(blockchain)
+        if leader is None:
+            raise Exception("No leader available for consensus")
+        self.leader = leader
+        # Pre-prepare phase
+        pre_msg = self.pre_prepare(transaction)
+        # Prepare phase: collect prepare messages from selected nodes
+        participants = self.optimize_node_selection()
+        prepare_msgs = [self.prepare(pre_msg) for _ in participants]
+        if len(prepare_msgs) < 2 * self.f + 1:
+            raise Exception("Prepare phase failed: insufficient prepares")
+        # Commit phase: collect commit results
+        commit_results = [self.commit(msg) for msg in prepare_msgs]
+        if sum(1 for res in commit_results if res) < 2 * self.f + 1:
+            raise Exception("Commit phase failed: insufficient commits")
+        # Reply phase
+        reply = self.reply(pre_msg)
+        return reply
 
     def get_performance_metrics(self):
         """Calculate and return blockchain performance metrics."""

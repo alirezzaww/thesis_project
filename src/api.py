@@ -1,19 +1,21 @@
 import json
-import sys
 import time
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 from web3 import Web3
 
-# Add src to Python path
-sys.path.append('./src')
+from consensus.hybrid_consensus import UPBFT
+from consensus.dag_blockchain import DAGBlockchain
+from consensus.trust_model import TrustModel
 
-from src.consensus.hybrid_consensus import UPBFT
-from src.consensus.dag_blockchain import DAGBlockchain
-from src.consensus.trust_model import TrustModel
 
 app = Flask(__name__)
+
+# Load threshold from JSON
+with open("fraud_threshold.json", "r") as tf:
+    threshold_data = json.load(tf)
+    fraud_threshold = threshold_data.get("threshold", 0.5)
 
 # Load AI fraud detection model
 model = joblib.load("fraud_detection_model.pkl")
@@ -24,7 +26,7 @@ consensus = UPBFT(nodes=["Node1", "Node2", "Node3", "Node4"], f=1, trust_model=t
 blockchain = DAGBlockchain(consensus=consensus)
 
 # Connect to Local Hardhat Blockchain
-web3 = Web3(Web3.HTTPProvider("http://hardhat-node:8545"))
+web3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
 
 # Load Smart Contract
 contract_address = Web3.to_checksum_address("0x5fbdb2315678afecb367f032d93f642f64180aa3")
@@ -50,20 +52,31 @@ else:
 
 @app.route('/predict', methods=['POST'])
 def predict_fraud():
+    import math
     data = request.json
+    sender_node = data['sender']  # e.g., "Node1"
+    trust_score_real = trust_model.get_trust_score(data['sender'])
+
     features = np.array([[
         data['amount'],
-        data['transaction_time'],
         data['num_transactions_past_week'],
         data['sender_encoded'],
-        data['receiver_encoded']
+        data['receiver_encoded'],
+        trust_score_real
     ]])
-    prediction = model.predict(features)[0]
+    score = model.predict_proba(features)[0][1]
+    prediction = int(score > fraud_threshold)
+    # prediction = model.predict(features)[0]
 
     if prediction == 1:
-        tx_hash = contract.functions.flagFraudulent(data['transaction_id']).transact()
+        tx_id = int(data['transaction_id'])  # convert to uint256-compatible int
+        tx_hash = contract.functions.flagFraudulent(tx_id).transact()
         web3.eth.wait_for_transaction_receipt(tx_hash)
-        return jsonify({"message": "🚨 Fraud detected!", "transaction_id": data['transaction_id']})
+        return jsonify({
+            "message": "🚨 Fraud detected!",
+            "transaction_id": data['transaction_id'],
+            "score": round(score, 4)
+        })
     else:
         proposer = consensus.elect_leader(blockchain)
         if proposer is None:
@@ -75,7 +88,8 @@ def predict_fraud():
         return jsonify({
             "message": "✅ Transaction is safe & added to DAG.",
             "transaction_id": data['transaction_id'],
-            "proposer": proposer
+            "proposer": proposer,
+            "score": round(score, 4)
         })
 
 @app.route('/add_tx', methods=['POST'])
@@ -145,7 +159,32 @@ def simulate_attack():
     blockchain.add_block([fake_tx], attacker)
     return jsonify({"message": "⚠️ Simulated malicious transaction submitted.", "attacker": attacker})
 
-# ---------------------- RUN ----------------------
+# ---------------------- Additional Endpoints ----------------------
+
+# Return all finalized blocks
+@app.route('/finalized_blocks', methods=['GET'])
+def get_finalized_blocks():
+    finalized_blocks = blockchain.get_finalized_blocks()
+    return jsonify([
+        {
+            "index": block.index,
+            "proposer": block.proposer,
+            "transactions": block.transactions,
+            "parent_hashes": block.previous_hashes
+        } for block in finalized_blocks
+    ])
+
+# Return node tiers and trust scores
+@app.route('/node_tiers', methods=['GET'])
+def get_node_tiers():
+    tiers = {
+        node: {
+            "trust_score": round(consensus.trust_model.get_trust_score(node), 4),
+            "tier": consensus.trust_model.get_reputation_tier(node)
+        }
+        for node in consensus.nodes
+    }
+    return jsonify(tiers)
 
 # Root endpoint to show API is running
 @app.route('/')

@@ -1,0 +1,9 @@
+{
+  "trust_scores": {
+    "Node1": 0.25,
+    "Node2": 0.25,
+    "Node3": 0.25,
+    "Node4": 0.25
+  },
+  "malicious_nodes": []
+}

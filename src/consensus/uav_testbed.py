@@ -9,8 +9,20 @@ class UAVTestbed:
         self.consensus = UPBFT(self.uavs, f=1)
         self.blockchain = DAGBlockchain(self.consensus)
 
-    def simulate_network(self):
+    def simulate_network(self, num_rounds=5000):
         """Simulate UAV blockchain transaction processing."""
-        for _ in range(5000):
+        start_time = time.time()
+        for _ in range(num_rounds):
             leader = self.consensus.elect_leader()
             self.blockchain.add_block(["Tx"], leader)
+        end_time = time.time()
+        duration = end_time - start_time
+        print(f"\n=== Simulation Summary ===")
+        print(f"Rounds: {num_rounds}, Duration: {duration:.2f}s")
+        print("Consensus metrics:", self.consensus.performance_metrics)
+        # Print DAG metrics if available
+        try:
+            dag_metrics = self.blockchain.get_performance_metrics()
+            print("DAG metrics:", dag_metrics)
+        except AttributeError:
+            pass

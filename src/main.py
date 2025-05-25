@@ -40,5 +40,15 @@ if __name__ == "__main__":
     for i in range(0, len(transactions), BATCH_SIZE):
         batch = transactions[i:i + BATCH_SIZE]
         process_transaction_batch(batch)
+        print(f"\n[INFO] ✅ Processed Batch {i // BATCH_SIZE + 1}")
+        finalized = blockchain.get_finalized_blocks()
+        print(f"[INFO] 🔒 Finalized Blocks So Far: {len(finalized)}")
+        for node in consensus.nodes:
+            trust = consensus.trust_model.get_trust_score(node)
+            tier = consensus.trust_model.get_reputation_tier(node)
+            print(f" - {node}: Trust={trust:.3f} | Tier={tier}")
     execution_time = max(time.perf_counter() - start_time, 0.1)
     blockchain.validate_dag()
+    print(f"\n[SUMMARY] ✅ Execution Time: {execution_time:.2f} seconds")
+    print(f"[SUMMARY] ⛓️ Total Blocks: {len(blockchain.blocks)}")
+    print(f"[SUMMARY] 🔐 Finalized Blocks: {len(blockchain.get_finalized_blocks())}")
